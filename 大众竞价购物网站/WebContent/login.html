@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>竞价商城系统</title>
+    <link rel="stylesheet" href="style/login_pc.css">
+    <link rel="stylesheet" href="style/login_mobile.css">
+    <link rel="stylesheet" href="style/font-awesome.min.css">
+    <script src="JQuery/jquery-3.4.1.min.js"></script>
+    <script src="script/jquery.cookie.js"></script>
+    <script src="script/loginPageControl.js"></script>
+</head>
+<body>
+    <div class="menu_fixedHeader">
+        <div class="inner">
+            <div class="mobile_login_menu">
+                <a href="#" class="mobile_menu"></a>
+            </div>
+            <div class="mobile_logo">
+                <img src="image/logo.png">
+            </div>
+            <div class="mobile_login_btn">
+                <a href="#">
+                        <svg style="width:20px;height:20px;position:relative;top:0px;" xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 1024 1024" version="1.1" onmouseover="this.getElementsByClassName('svgpath')[0].style.fill='#000'" onmouseout="this.getElementsByClassName('svgpath')[0].style.fill=''">
+                            <path class="svgpath" fill="" d="M770.858667 576.597333c-9.258667-7.253333-22.442667-5.418667-29.525334 4.096s-5.333333 22.997333 3.925334 30.250667c90.538667 70.912 144.725333 176.256 150.698666 291.669333H128.085333C139.050667 695.466667 307.029333 530.261333 512 530.261333c117.845333 0 213.674667-98.176 213.674667-218.922666 0-120.661333-95.829333-218.922667-213.674667-218.922667-117.802667 0-213.632 98.261333-213.632 218.922667a218.88 218.88 0 0 0 108.885333 189.568C222.592 548.992 85.333333 720.256 85.333333 924.16v21.589333h853.333334v-21.589333c0-137.344-61.184-263.978667-167.808-347.562667zM340.48 311.338667c0-96.896 76.970667-175.744 171.52-175.744 94.592 0 171.562667 78.848 171.562667 175.744S606.592 487.082667 512 487.082667c-94.549333 0-171.52-78.848-171.52-175.744z">
+
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="menu_film" style="display:none"></div>
+    <div class="menu_wrapper">
+        <div class="menu_container">
+            <div class="login_btn_container">
+                <div class="menu_login_btn">
+                    <a href="#">登录</a>
+                </div>
+                <div class="menu_register_btn">
+                    <a href="#">注册</a>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="menu_container_top" style="display:none">
+                <div style="padding: 15px 20px">
+                欢迎你！<span class="user">淅淅沥沥</span>
+                <a class="logout">退出</a>
+                </div>
+            </div>
+            <ul style="margin-top: 20px">
+                <li class="menu_item"><a class="my_main"><span>首页</span></a></li>
+                <li class="menu_item"><a class="my_order"><span>我的叫号</span></a></li>
+                <li class="menu_item"><a><span>人气美食</span></a></li>
+                <li class="menu_item"><a><span>联系我们</span></a></li>
+                <li class="menu_item"><a class="about_us"><span>关于我们</span></a></li>
+                <li class="menu_item"><a><span>帮助</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="page">
+        <div id="top_bar">
+            <div class="wf_wrap">
+                <div class="wf_table">
+                    <div class="wf_left">
+                        <p>欢迎访问大众竞价购物商城!</p>   
+                    </div>
+                    <div class="wf_right">
+                        <div class="welcome" style="display:none">
+                            欢迎你！
+                            <span class="user">淅淅沥沥</span>
+                            <a class="logout">退出</a>
+                        </div>
+                        <div class="without_login">
+                                <a href="/login.html">
+                                    <span class="icon_user"></span>
+                                    登陆
+                                </a>
+                                <a href="/register.html">
+                                    <span class="icon_signin"></span>
+                                    注册
+                                </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header">
+            <div class="header_wrap">
+                <div class="header_table">
+                    <div class="header_left">
+                        <img src="image/logo.png" style="width: 112px; height: 57px;">
+                    </div>
+                    <div class="header_right">
+                        <div>
+                            <div class="phone_border">
+                                <div class="phone">
+                                    <span class="icon_phone"></span>
+                                    020-666-666
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="navigation_holder">
+                <ul class="main_nav">
+                    <li>
+                        <a class="my_main">
+                            <span>首页</span> 
+                        </a>
+                    </li>
+                    <li>
+                        <a class="my_order">
+                            <span>我的订单</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="shoppingCart">
+                            <span>购物车</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span>正在竞价</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="about_us">
+                            <span>关于我们</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span>帮助</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="main_login">
+            <div class="login_wrap">
+                <div class="header_background">
+                    <div class="background_media"></div>
+                    <div class="background_mask"></div>
+                </div>
+            </div>
+            <div class="main_content">
+                <div class="main_container">
+                    <div class="rqs_row">
+                        <div class="main_form">
+                            <div class="form_body">
+                                <form class="form_login">
+                                    <div class="form_login_margin">
+                                        <div class="user_label">用户账号</div>
+                                        <div class="user_input">
+                                            <input type="text" id="login_user_id" placeholder="6~16位纯数字">
+                                            <div class="pass_warning login_user_id_warning" style="display: none">
+                                                无效的用户名。
+                                            </div>
+                                            <div class="user_clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="form_pass_margin">
+                                        <div class="pass_label">用户密码</div>
+                                        <div class="pass_input">
+                                            <input type="password" id="login_user_password" placeholder="6~16位数字或字母组合">
+                                            <div class="pass_warning login_user_password_warning" style="display: none">
+                                                密码错误。
+                                            </div>
+                                            <div class="user_clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="user_column">
+                                        <div class="user_compact">
+                                            <div class="user_input">
+                                                <div class="user_checkbox">
+                                                    <label class="user_checkbox_label">
+                                                        <input type="checkbox" id="remember_me">
+                                                        记住我（请在私人设备上使用此功能）
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="user_submit">
+                                        <input type="submit" class="login_btn" value="登录">
+                                        <input type="submit" class="register_btn" value="注册">
+                                        <a href="#" class="forget_pass">忘记密码？点这里找回</a>
+                                        <div class="user_clear"></div>
+                                    </div>
+                                </form>
+                                <form class="form_register"  style="display: none">
+                                    <div class="form_register_margin">
+                                        <div class="user_label">用户账号</div>
+                                        <div class="user_input">
+                                            <input type="text" id="register_user_id" placeholder="6~16位纯数字">
+                                            <div class="pass_warning register_user_id_warning" style="display: none">
+                                                无效的用户账号。
+                                            </div>
+                                            <div class="user_clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="form_name_margin">
+                                            <div class="user_label">用户名</div>
+                                            <div class="user_input">
+                                                <input type="text" id="register_user_name" placeholder="1~6位字符串">
+                                                <div class="pass_warning register_user_name_warning" style="display: none">
+                                                    无效的用户名。
+                                                </div>
+                                                <div class="user_clear"></div>
+                                            </div>
+                                        </div>
+                                    <div class="user_clear"></div>
+                                    <div class="form_pass_margin">
+                                        <div class="pass_label">密码</div>
+                                        <div class="pass_input">
+                                            <input type="password" id="register_user_password" placeholder="6~16位数字或字母组合">
+                                            <div class="pass_warning register_user_password_warning" style="display: none">
+                                                密码错误。
+                                            </div>
+                                            <div class="user_clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="form_passAgain_margin">
+                                        <div class="pass_label">再输一次密码</div>
+                                        <div class="pass_input">
+                                            <input type="password" id="register_user_password_again">
+                                            <div class="pass_warning register_user_password_again_warning" style="display: none">
+                                                密码错误。
+                                            </div>
+                                            <div class="user_clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="form_passStrength_margin">
+                                        <div class="user_input">
+                                            <span class="strength_text">密码强度</span>
+                                            <div class="user_clear"></div>
+                                            <span class="strength_cotainer">
+                                                <span class="strength_plain"></span>
+                                                <span class="strength_plain"></span>
+                                                <span class="strength_plain"></span>
+                                                <span class="strength_plain"></span>
+                                                <span class="strength_plain"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="user_column">
+                                        <div class="register_compact">
+                                            <div class="register_input">
+                                                <div class="user_checkbox">
+                                                    <label class="register_checkbox_label">
+                                                        <input type="checkbox">
+                                                        我同意《用户手册》和《保密条款》  
+                                                        <span style="color: red;padding-left: 10px;display:none">请勾选同意！</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="user_submit">
+                                        <input type="submit" class="register_register_btn" value="注册">
+                                        <input type="submit" class="register_login_btn" value="已经有账号了？请登陆">
+                                        <div class="user_clear"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="login_explain">
+                            <div class="explain_wrapper">
+                                <div>更新说明：(beta0.2）</div>
+                                <ol>
+
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user_clear"></div>
+        </div>
+        <div id="footer">
+            <div class="wf_wrap">
+                <div class="wf_continer">
+                    <div class="widget_container footer1">
+                        <div class="horizon_menu">
+                            <ul class="menu">
+                                <li><a href="#"><span>首页</span></a></li>
+                                <li><a href="#"><span>我的订单</span></a></li>
+                                <li><a href="#"><span>购物车</span></a></li>
+                                <li><a href="#"><span>正在竞价</span></a></li>
+                                <li><a href="#"><span>关于我们</span></a></li>
+                                <li><a href="#"><span>帮助</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="wf_container footer2">
+                    <div class="bit_post_list">
+                        <div class="bit_widget_frame">
+                            <ul class="gallery_icon_list">
+                                <li><span class="facebook_icon"></span></li>
+                                <li><span class="vedio_icon"></span></li>
+                                <li><span class="linkedin_icon"></span></li>
+                                <li><span class="twitter_icon"></span></li>
+                                <!-- <li><span class="google_icon"></span></li> -->
+                                <li><span class="wechat_icon"></span></li>
+                                <li style="clear:both"></li>
+                            </ul>
+                        </div>
+                    </div> 
+                    <div class="bit_post_list">
+                        <div class="bit_widget_frame">
+                            <img src="image/logo2.png" style="width:124px; height: 54px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bottom_bar">
+            <div class="wf_wrap">
+                <div class="wf_table" style="display:flex;justify-content: center">
+                    <span>
+                        版权所有
+                        <small>©</small>
+                        2020 大众竞价购物系统.  ICP备666666666号-1
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="phantom">
+        <div class="phantom_content">
+            <div class="phantom_inner">
+                <div class="login_box">
+                    <img src="image/logo2.png" style="max-height: 33px;">
+                </div>
+                <div class="menu_box">
+                    <ul>
+                        <li><span class="my_main">首页</span></li>
+                        <li><span class="my_order">我的订单</span></li>
+                        <li><span>购物车</span></li>
+                        <li><span class="about_us">正在竞价</span></li>
+                        <li><span>关于我们</span></li>
+                        <li><span>帮助</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

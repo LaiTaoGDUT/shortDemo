@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>竞价商城系统</title>
+    <link rel="stylesheet" href="style/login_pc.css">
+    <link rel="stylesheet" href="style/login_mobile.css">
+	<link href="style/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="style/slider.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="style/font-awesome.min.css">
+    <script src="JQuery/jquery-3.4.1.min.js"></script>
+    <script src="script/jquery.cookie.js"></script>
+    <script src="script/indexPageContorl.js"></script>
+    <script type="text/javascript" src="script/startstop-slider.js"></script>
+</head>
+<body>
+    <div class="menu_fixedHeader">
+        <div class="inner">
+            <div class="mobile_login_menu">
+                <a href="#" class="mobile_menu"></a>
+            </div>
+            <div class="mobile_logo">
+                <img src="image/logo.png">
+            </div>
+            <div class="mobile_login_btn">
+                <a href="#">
+                        <svg style="width:20px;height:20px;position:relative;top:0px;" xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 1024 1024" version="1.1" onmouseover="this.getElementsByClassName('svgpath')[0].style.fill='#000'" onmouseout="this.getElementsByClassName('svgpath')[0].style.fill=''">
+                            <path class="svgpath" fill="" d="M770.858667 576.597333c-9.258667-7.253333-22.442667-5.418667-29.525334 4.096s-5.333333 22.997333 3.925334 30.250667c90.538667 70.912 144.725333 176.256 150.698666 291.669333H128.085333C139.050667 695.466667 307.029333 530.261333 512 530.261333c117.845333 0 213.674667-98.176 213.674667-218.922666 0-120.661333-95.829333-218.922667-213.674667-218.922667-117.802667 0-213.632 98.261333-213.632 218.922667a218.88 218.88 0 0 0 108.885333 189.568C222.592 548.992 85.333333 720.256 85.333333 924.16v21.589333h853.333334v-21.589333c0-137.344-61.184-263.978667-167.808-347.562667zM340.48 311.338667c0-96.896 76.970667-175.744 171.52-175.744 94.592 0 171.562667 78.848 171.562667 175.744S606.592 487.082667 512 487.082667c-94.549333 0-171.52-78.848-171.52-175.744z">
+
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="menu_film" style="display:none"></div>
+    <div class="menu_wrapper">
+        <div class="menu_container">
+            <div class="login_btn_container">
+                <div class="menu_login_btn">
+                    <a href="#">登录</a>
+                </div>
+                <div class="menu_register_btn">
+                    <a href="#">注册</a>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="menu_container_top" style="display:none">
+                <div style="padding: 15px 20px">
+                欢迎你！<span class="user">淅淅沥沥</span>
+                <a class="logout">退出</a>
+                </div>
+            </div>
+            <ul style="margin-top: 20px">
+                <li class="menu_item"><a class="my_main"><span>首页</span></a></li>
+                <li class="menu_item"><a class="my_order"><span>我的叫号</span></a></li>
+                <li class="menu_item"><a><span>人气美食</span></a></li>
+                <li class="menu_item"><a><span>联系我们</span></a></li>
+                <li class="menu_item"><a class="about_us"><span>关于我们</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="page">
+        <div id="top_bar">
+            <div class="wf_wrap">
+                <div class="wf_table">
+                    <div class="wf_left">
+                        <p>欢迎访问大众竞价购物商城!</p>   
+                    </div>
+                    <div class="wf_right">
+                        <div class="welcome">
+                            欢迎你！
+                            <span class="user">淅淅沥沥</span>
+                            <a class="logout">退出</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main_content" style="width: 80%; margin: 0 auto;">
+            <div class="header">
+                <div class="header_top">
+                    <div class="logo">
+                        <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                    </div>
+                    <div class="cart">
+                        <p> <span>购物车:</span>
+                            <div id="dd" class="wrapper-dropdown-2"> <span class="totalNum">0</span> 物品 - ￥<span class="totalPrice">0.00</span>
+                                <ul class="dropdown">
+                                    <li>哇哈哈 ￥80 剩余3天 <a href="#" class="pay button">支付尾款</a></li>
+                                    <li>哇哈哈 ￥80 剩余3天 <a href="#" class="pay button">支付尾款</a></li>
+                                    <li>哇哈哈 ￥80 剩余3天 <a href="#" class="pay button">支付尾款</a></li>
+                                </ul>
+                            </div>
+                        </p>
+                    </div>
+                    <script type="text/javascript">
+                        function DropDown(el) {
+                            this.dd = el;
+                            this.initEvents();
+                        }
+                        DropDown.prototype = {
+                            initEvents: function () {
+                                var obj = this;
+    
+                                obj.dd.on('click', function (event) {
+                                    $(this).toggleClass('active');
+                                    event.stopPropagation();
+                                });
+                            }
+                        }
+    
+                        $(function () {
+    
+                            var dd = new DropDown($('#dd'));
+    
+                            $(document).click(function () {
+                                // all dropdowns
+                                $('.wrapper-dropdown-2').removeClass('active');
+                            });
+    
+                        });
+    
+                    </script>
+                    <div class="clear"></div>
+                </div>
+                <div class="header_bottom">
+                    <div class="menu2">
+                        <ul>
+                            <li class="active"><a href="index.html">首页</a></li>
+                            <li><a href="order.html">我的订单</a></li>
+                            <li><a href="delivery.html">购物车</a></li>
+                            <li><a href="news.html">正在竞价</a></li>
+                            <li><a href="contact.html">关于我们</a></li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <div class="search_box">
+                        <form>
+                            <input type="text" value="Search" onfocus="this.value = '';"
+                                onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="header_slide">
+                    <div class="header_bottom_left">
+                        <div class="categories">
+                            <ul>
+                                <h3>商品类别</h3>
+                                <li><a href="#">Mobile Phones</a></li>
+                                <li><a href="#">Desktop</a></li>
+                                <li><a href="#">Laptop</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Software</a></li>
+                                <li><a href="#">Sports &amp; Fitness</a></li>
+                                <li><a href="#">Footwear</a></li>
+                                <li><a href="#">Jewellery</a></li>
+                                <li><a href="#">Clothing</a></li>
+                                <li><a href="#">Home Decor &amp; Kitchen</a></li>
+                                <li><a href="#">Beauty &amp; Healthcare</a></li>
+                                <li><a href="#">Toys, Kids &amp; Babies</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header_bottom_right">
+                        <div class="slider">
+                            <div id="slider">
+                                <div id="mover">
+                                    <div id="slide-1" class="slide">
+                                        <div class="slider-img">
+                                            <a href="preview.html"><img src="images/slide-1-image.png"
+                                                    alt="learn more" /></a>
+                                        </div>
+                                        <div class="slider-text">
+                                            <h1>清仓<br><span>大促</span></h1>
+                                            <h2>直降 20%</h2>
+                                            <div class="features_list">
+                                                <h4>立刻去查看商品详情！</h4>
+                                            </div>
+                                            <a href="preview.html" class="button">立即购买</a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="slide">
+                                        <div class="slider-text">
+                                            <h1>清仓<br><span>大促</span></h1>
+                                            <h2>直降 40%</h2>
+                                            <div class="features_list">
+                                                <h4>立刻去查看商品详情！</h4>
+                                            </div>
+                                            <a href="preview.html" class="button">立即购买</a>
+                                        </div>
+                                        <div class="slider-img">
+                                            <a href="preview.html"><img src="images/slide-3-image.jpg"
+                                                    alt="learn more" /></a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="slide">
+                                        <div class="slider-img">
+                                            <a href="preview.html"><img src="images/slide-2-image.jpg"
+                                                    alt="learn more" /></a>
+                                        </div>
+                                        <div class="slider-text">
+                                            <h1>清仓<br><span>大促</span></h1>
+                                            <h2>直降 10%</h2>
+                                            <div class="features_list">
+                                                <h4>立刻去查看商品详情！</h4>
+                                            </div>
+                                            <a href="preview.html" class="button">立即购买</a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="content">
+                    <div class="content_top">
+                        <div class="heading">
+                            <h3>已经开始的竞价</h3>
+                        </div>
+                        <div class="see">
+                            <p><a href="#">查看所有竞价商品</a></p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="section group biding">
+                        
+                    </div>
+                    <div class="content_bottom">
+                        <div class="heading">
+                            <h3>尚未开始的竞价</h3>
+                        </div>
+                        <div class="see">
+                            <p><a href="#">查看所有竞价商品</a></p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="section group notStart">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="wf_wrap">
+                <div class="wf_continer">
+                    <div class="widget_container footer1">
+                        <div class="horizon_menu">
+                            <ul class="menu">
+                                <li><a href="#"><span>首页</span></a></li>
+                                <li><a href="#"><span>我的订单</span></a></li>
+                                <li><a href="#"><span>购物车</span></a></li>
+                                <li><a href="#"><span>正在竞价</span></a></li>
+                                <li><a href="#"><span>关于我们</span></a></li>
+                                <li><a href="#"><span>帮助</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="wf_container footer2">
+                    <div class="bit_post_list">
+                        <div class="bit_widget_frame">
+                            <ul class="gallery_icon_list">
+                                <li><span class="facebook_icon"></span></li>
+                                <li><span class="vedio_icon"></span></li>
+                                <li><span class="linkedin_icon"></span></li>
+                                <li><span class="twitter_icon"></span></li>
+                                <!-- <li><span class="google_icon"></span></li> -->
+                                <li><span class="wechat_icon"></span></li>
+                                <li style="clear:both"></li>
+                            </ul>
+                        </div>
+                    </div> 
+                    <div class="bit_post_list">
+                        <div class="bit_widget_frame">
+                            <img src="image/logo2.png" style="width:124px; height: 54px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bottom_bar">
+            <div class="wf_wrap">
+                <div class="wf_table" style="display:flex;justify-content: center">
+                    <span>
+                        版权所有
+                        <small>©</small>
+                        2020 大众竞价购物网站.  ICP备666666666号-1
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="phantom">
+        <div class="phantom_content">
+            <div class="phantom_inner">
+                <div class="login_box">
+                    <img src="image/logo2.png" style="max-height: 33px;">
+                </div>
+                <div class="menu_box">
+                    <ul>
+                        <li><span class="my_main">首页</span></li>
+                        <li><span class="my_order">我的订单</span></li>
+                        <li><span>购物车</span></li>
+                        <li><span class="about_us">正在竞价</span></li>
+                        <li><span>关于我们</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

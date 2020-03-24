@@ -1,0 +1,573 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>竞价商城系统API</title>
+	<meta charset="utf-8" />
+</head>
+<style>
+/*清除浏览器样式*/
+body{background: URL('../images/bg.png');font-family:'微软雅黑';font-size:16px}
+p{margin-left:15px;}
+a{color:#ffffff;text-decoration:none;}
+ul,li{padding:0;margin:0;}
+li{display:block;list-style-type: none;}
+h1{font-size: 200%;margin: 20px 0 0 0;color:#FFB848}
+h2{font-size: 180%;margin: 80px 0 0 0;color:#FFB848}
+h3{font-size: 150%;margin: 50px 0 0 0;font-weight: normal;color:#FFDEAA;}
+h4{border-left-width: 5px;border-left-style: solid;border-left-color: #9B5F00;padding: 0 0 0 10px;}
+blockquote{margin:0 0 0 20px;}
+/*常用样式*/
+.bc{margin:0 auto;}
+.fl{float:left;}
+.cb{clear:both;}
+.w960{width:960px;}
+.tc{text-align:center;}
+.code{
+	border: solid 1px #3C3A3A;
+	padding: 20px;
+	border-radius: 5px;
+	margin: 0 40px;
+	background:#272822;
+}
+.c-prink{color:#f92672}
+.c-grey{color:#6D6D6D;}
+/*特殊样式*/
+/*主体*/
+.main-box-height{min-height:80%}
+.main-box{
+	margin:50px auto 0;
+	width:960px;
+	padding:0px;
+	border-radius:10px;
+	color:#ffffff;
+}
+/*左侧边栏*/
+.left-bar{
+	background:#9B5F00;
+	border-radius:10px 0 0 10px;
+	width:250px;
+	position: fixed !important;
+	position: static;
+	margin-left: 0px;
+	max-height:80%;
+	overflow-y:auto; 
+}
+.left-bar .c-prink{color:#FF6464}
+
+.left-bar .nav li .H2{
+	display: block;
+	font-weight: bolder;
+	font-size: 120%;
+	padding: 10px 15px;
+
+	/*
+	border-bottom: solid 1px #643D00;
+	border-top: solid 1px #8E5700;*/
+	/*border-bottom: solid 2px #7B4D04;*/
+}
+.left-bar .nav li .H3{
+	display: block;
+	padding: 3px 0px 3px 33px;
+	background-color: #7B4D04;/*
+	border-bottom: solid 1px #643D00;
+	border-top: solid 1px #8E5700;*/
+	/*border-bottom: solid 1px #482D02;*/
+}
+.left-bar .nav li:first-child a{
+	border-radius:10px 0 0 0;
+}
+.left-bar .nav li a:hover{
+	background: #482D02;
+}
+.left-bar .nav li .H3:hover{
+	background: #482D02;
+}
+.left-bar .nav .method-name{
+	/*display:block;*/
+	font-size:60%;
+	font-weight: bolder;
+	color:#AD874A;
+	/*border-left: solid 3px #AD874A;*/
+	margin-top:3px;
+	padding-left: 5px;
+}
+/*右侧主体*/
+.content{
+	background:#140D03 ;
+	background:rgba(0, 0, 0, 0.78);
+	width:650px;
+	border-radius:0 10px 10px 0;
+	padding:0 30px 150px;
+}
+.content .method-name{
+	font-size: 80%;
+	font-weight: bolder;
+	color:#ffffff;
+	margin-left:10px;
+}
+.right-bar{
+	padding-left: 250px !important;
+	padding-left: 0px;
+}
+</style>
+<body>
+	<div class="main-box main-box-height">
+		<div id="js-left-bar" class="left-bar fl main-box-height">
+			<ul class="pt nav">
+
+			</ul>
+		</div>
+		<div class="right-bar">
+		<div id="main-box" class="content  fl main-box-height">
+
+			<h1>竞价商城系统API</h1>
+			<h2 class="anchor">概述</h2>
+			<p>
+				本API用于竞价商城系统的开发<br/>
+
+			</p>
+			<p>
+				当前版本：bata 0.1
+			</p>
+			<h2 class="anchor">顾客相关的接口</h2>
+			<p>顾客是一个该商城系统最核心的组成部分。这里将会提供包括注册、登录等相关接口。</p>
+			<h3 class="anchor">注册<span class="method-name">register</span></h3>
+			<p>用于注册的接口。注册成功后，系统自动登陆该用户并记住登陆状态。</p>
+			<p>
+				<h4>接口地址</h4>
+				<div class="code tc">/registerServlet</div>
+				<h4>请求参数</h4>
+				<p>
+					<div class="code">
+						{<blockquote>
+						userId:'18933247746',<span class="c-grey">//字符串，用户ID，用来登陆系统</span><br>
+						userName：'admin',<span class="c-grey">//字符串，用户昵称</span><br>
+						userPassword:'123123'<span class="c-grey">//字符串，密码</span></blockquote>
+						}
+					</div>
+				</p>
+				<h4>返回参数</h4>
+				
+				<p>调用成功，则返回
+				<div class="code">
+					{<blockquote>
+					"result":"success",<span class="c-grey">//字符串，表示成功状态，下同</span><br>
+					"userId":"18933247746" <span class="c-grey">//字符串，服务器会返回顾客的id</span></blockquote>
+					} 
+				</div></p><p>
+				调用失败，则返回
+				<div class="code">
+					{<blockquote>
+					"result":"failed",<span class="c-grey">//字符串，表示失败状态，下同</span><br>
+					"reason":"服务器错误"<span class="c-grey">//字符串，提示信息，如未设置密码</span></blockquote>
+					} 
+				</div></p>
+			</p>
+			<h3 class="anchor">登录<span class="method-name">login：post</span></h3>
+			<p>用于登录的接口。所有接口中，有相当一部分接口都是需要用户登录之后才可以正常使用的。当用户登录以后，服务器会记住用户的登录状态。</p>
+			<p>登陆后，如果长时间没有进行操作，服务器会认为用户已经下线。<!-- 你可以通过下面的（checkIsLogin）接口检查自己现在还在不在线。同样的 -->你可以通过下线接口（logout）来主动下线。
+				<h4>接口地址</h4>
+				<div class="code tc">/loginServlet</div>
+				<h4>请求参数</h4>
+				<p>
+					<div class="code">
+						{<blockquote>
+						userId:'18933247746',<span class="c-grey">//字符串，顾客ID</span><br>
+						userPassword:'123123'<span class="c-grey">//字符串，密码</span></blockquote>
+						}
+					</div>
+				</p>
+				<h4>返回参数</h4>
+				
+				<p>调用成功，则返回
+				<div class="code">
+					{<blockquote>
+					"result":"success",<span class="c-grey">//字符串，表示成功状态，下同</span><br>
+					"userName":'LaiTao'<span class="c-grey">//字符串，服务器会返回用户的id</span></blockquote>
+					} 
+				</div></p><p>
+				调用失败，则返回
+				<div class="code">
+					{<blockquote>
+					"result":"failed",<span class="c-grey">//字符串，表示失败状态，下同</span><br>
+					"reason":"服务器错误"<span class="c-grey">//字符串，提示信息，如未设置密码</span></blockquote>
+					} 
+				</div></p>
+			</p>
+
+			<h3 class="anchor">下线，登出<span class="method-name">logout：post</span></h3>
+			<p>用于下线的接口。
+				<h4>接口地址</h4>
+				<div class="code tc">/logoutServlet</div>
+				<h4>请求参数</h4>
+				<p>
+					无
+				</p>
+				<h4>返回参数</h4>
+				
+				<p>只返回一句
+				<div class="code">
+					{<blockquote>
+					"result":"success"
+					</blockquote>
+					} 
+				</div>
+				</p>
+				<p>失败则返回
+				<div class="code">
+					{<blockquote>
+					"result":"failed",<br>
+					"reason":"服务器错误"
+					</blockquote>
+					} 
+				</div>
+				</p>
+			</p>
+			<h3 class="anchor">获取购物车内的商品<span class="method-name">getCartProduction：post</span></h3>
+			<p>获取用户的购物车内的商品列表
+				<h4>接口地址</h4>
+				<div class="code tc">/getCartProductionServlet</div>
+				<h4>请求参数</h4>
+				<p>
+					无
+				</p>
+				<h4>返回参数</h4>
+				
+				<p>调用成功，则返回商品列表
+				<div class="code">
+					{<blockquote>
+					"result":"success",<br>
+					"productList":<br>
+					[
+					 <blockquote>
+					 	{
+					 		<blockquote>
+								"productID":"12312321"<span class="c-grey">//字符串，商品ID</span><br>
+								"pName":"保暖围巾",<span class="c-grey">//字符串，商品名字</span><br>
+								"sName":"你家",<span class="c-grey">//字符串，商品店家</span><br>
+								"tail":"1000.00",<span class="c-grey">//字符串，商品尾款</span><br>
+								"selected":true<span class="c-grey">//布尔值，是否被选中</span>
+							</blockquote>
+					 	},
+					 </blockquote>					 
+					 <blockquote>
+					 	{
+					 		<blockquote>
+								"productID":"12312321"<span class="c-grey">//字符串，商品ID</span><br>
+								"pName":"保暖围巾",<span class="c-grey">//字符串，商品名字</span><br>
+								"sName":"你家",<span class="c-grey">//字符串，商品店家</span><br>
+								"tail":"1000.00",<span class="c-grey">//字符串，商品尾款</span><br>
+								"selected":true<span class="c-grey">//布尔值，是否被选中</span>
+							</blockquote>
+					 	}
+					 </blockquote>
+					]
+					</blockquote>
+					} 
+				</div>
+				</p>
+				<p>调用成功，但是没有商品
+					<div class="code">
+						{<blockquote>
+						"result":"empty"
+						</blockquote>
+						} 
+					</div>
+				</p>
+				<p>失败则返回
+				<div class="code">
+					{<blockquote>
+					"result":"failed",<br>
+					"reason":"服务器错误"
+					</blockquote>
+					} 
+				</div>
+				</p>
+			</p>
+			<h3 class="anchor">获取参与竞价的商品<span class="method-name">getAuction：post</span></h3>
+			<p>获取用户参与竞价的商品，其中包含所有历史的竞价商品记录，请根据商品的竞价结束时间来判断该竞价是否仍在进行。
+				<h4>接口地址</h4>
+				<div class="code tc">/getAuctionServlet</div>
+				<h4>请求参数</h4>
+				<p>
+					无
+				</p>
+				<h4>返回参数</h4>
+				
+				<p>调用成功，则返回商品列表
+				<div class="code">
+					{<blockquote>
+					"result":"success",<br>
+					"productList":<br>
+					[
+					 <blockquote>
+					 	{
+					 		<blockquote>
+								"productID":"12312321"<span class="c-grey">//字符串，商品ID</span><br>
+								"pName":"保暖围巾",<span class="c-grey">//字符串，商品名字</span><br>
+								"sName":"你家",<span class="c-grey">//字符串，商品店家</span><br>
+								"bid":"1000.00",<span class="c-grey">//字符串，当前出价</span><br>
+								"endTime":"9：20"<span class="c-grey">//字符串，竞价的结束时间</span><br>
+								"acquire":true<span class="c-grey">//布尔值，是否能拍得</span>
+							</blockquote>
+					 	},
+					 </blockquote>					 
+					 <blockquote>
+					 	{
+					 		<blockquote>
+								"productID":"12312321"<span class="c-grey">//字符串，商品ID</span><br>
+								"pName":"保暖围巾",<span class="c-grey">//字符串，商品名字</span><br>
+								"sName":"你家",<span class="c-grey">//字符串，商品店家</span><br>
+								"bid":"1000.00",<span class="c-grey">//字符串，当前出价</span><br>
+								"endTime":"9：20"<span class="c-grey">//字符串，竞价的结束时间</span><br>
+								"acquire":true<span class="c-grey">//布尔值，是否能拍得</span>
+							</blockquote>
+					 	}
+					 </blockquote>
+					]
+					</blockquote>
+					} 
+				</div>
+				</p>
+				<p>调用成功，但是没有商品
+					<div class="code">
+						{<blockquote>
+						"result":"empty"
+						</blockquote>
+						} 
+					</div>
+				</p>
+				<p>失败则返回
+				<div class="code">
+					{<blockquote>
+					"result":"failed",<br>
+					"reason":"服务器错误"
+					</blockquote>
+					} 
+				</div>
+				</p>
+			</p>
+			<h3 class="anchor">竞价商品加价<span class="method-name">addAuction：post</span></h3>
+			<p>对某个商品的竞价活动进行加价，该接口是供已参与竞价的商品使用，对未参与竞价的商品，应使用参与商品竞价接口
+				<h4>接口地址</h4>
+				<div class="code tc">/addAuctionServlet</div>
+				<h4>请求参数</h4>
+				<p>
+					<div class="code">
+						{<blockquote>
+						productID:'123123'<span class="c-grey">//字符串，商品ID</span><br>
+						addMoney:'100.00'<span class="c-grey">//字符串，此次加价的金额</span></blockquote>
+						}
+					</div>
+				</p>
+				<h4>返回参数</h4>
+				
+				<p>调用成功，则返回当前参与的商品信息
+				<div class="code">
+					{<blockquote>
+					"result":"success",<br>
+					"acquire":true<span class="c-grey">//布尔值，是否能拍得</span>
+					</blockquote>}
+				</div>
+				</p>
+				<p>失败则返回
+				<div class="code">
+					{<blockquote>
+					"result":"failed",<br>
+					"reason":"服务器错误"
+					</blockquote>
+					} 
+				</div>
+				</p>
+			</p>
+			<h3 class="anchor">参与商品竞价<span class="method-name">auction：post</span></h3>
+			<p>参与某个商品的竞价活动，该接口是供未参与竞价的商品使用，已参与竞价的商品，应使用商品加价接口
+				<h4>接口地址</h4>
+				<div class="code tc">/auctionServlet</div>
+				<h4>请求参数</h4>
+				<p>
+					<div class="code">
+						{<blockquote>
+						productID:'123123'<span class="c-grey">//字符串，商品ID</span></blockquote>
+						}
+					</div>
+				</p>
+				<h4>返回参数</h4>
+				
+				<p>调用成功，则返回当前参与的商品信息
+					<div class="code">
+						{<blockquote>
+						"result":"success",<br>
+						"acquire":true<span class="c-grey">//布尔值，是否能拍得</span>
+						</blockquote>}
+					</div>
+				</p>
+				<p>失败则返回
+				<div class="code">
+					{<blockquote>
+					"result":"failed",<br>
+					"reason":"服务器错误"
+					</blockquote>
+					} 
+				</div>
+				</p>
+			</p>
+			<h3 class="anchor">获取所有商品<span class="method-name">auction：post</span></h3>
+			<p>参获取所有正在进行竞价活动的商品列表
+				<h4>接口地址</h4>
+				<div class="code tc">/productsServlet</div>
+				<h4>请求参数</h4>
+				<p>
+					无
+				</p>
+				<h4>返回参数</h4>
+				
+				<p>调用成功，则返回商品列表
+					<div class="code">
+						{<blockquote>
+							"result":"success",<br>
+							"productList1":<span class="c-grey">//已经开始的竞价</span><br><br>
+							[
+							 <blockquote>
+								 {
+									 <blockquote>
+										"productID":"12312321"<span class="c-grey">//字符串，商品ID</span><br>
+										"pName":"保暖围巾",<span class="c-grey">//字符串，商品名字</span><br>
+										"startPrice":"1000.00",<span class="c-grey">//字符串，商品起拍价</span><br>
+										"maxPrice":"1000.00",<span class="c-grey">//字符串，商品最高价</span><br>
+										"startTime":"9：20"<span class="c-grey">//字符串，竞价的开始时间</span><br>
+										"endTime":"9：20"<span class="c-grey">//字符串，竞价的结束时间</span><br>
+										"imgLink":"sdasuhdiua"<span class="c-grey">//字符串，商品的图片链接</span><br>
+									</blockquote>
+								 },
+							 </blockquote>					 
+							 <blockquote>
+								 {
+									 <blockquote>
+										"productID":"12312321"<span class="c-grey">//字符串，商品ID</span><br>
+										"pName":"保暖围巾",<span class="c-grey">//字符串，商品名字</span><br>
+										"startPrice":"1000.00",<span class="c-grey">//字符串，商品起拍价</span><br>
+										"maxPrice":"1000.00",<span class="c-grey">//字符串，商品最高价</span><br>
+										"startTime":"9：20"<span class="c-grey">//字符串，竞价的开始时间</span><br>
+										"endTime":"9：20"<span class="c-grey">//字符串，竞价的结束时间</span><br>
+										"imgLink":"sdasuhdiua"<span class="c-grey">//字符串，商品的图片链接</span><br>
+									</blockquote>
+								 }
+							 </blockquote>
+							],<br>
+							"productList2":<span class="c-grey">//还未开始的竞价</span><br>
+							[
+							 <blockquote>
+								 {
+									 <blockquote>
+										"productID":"12312321"<span class="c-grey">//字符串，商品ID</span><br>
+										"pName":"保暖围巾",<span class="c-grey">//字符串，商品名字</span><br>
+										"startPrice":"1000.00",<span class="c-grey">//字符串，商品起拍价</span><br>
+										"maxPrice":"1000.00",<span class="c-grey">//字符串，商品最高价</span><br>
+										"startTime":"9：20"<span class="c-grey">//字符串，竞价的开始时间</span><br>
+										"endTime":"9：20"<span class="c-grey">//字符串，竞价的结束时间</span><br>
+										"imgLink":"sdasuhdiua"<span class="c-grey">//字符串，商品的图片链接</span><br>
+									</blockquote>
+								 },
+							 </blockquote>					 
+							 <blockquote>
+								 {
+									 <blockquote>
+										"productID":"12312321"<span class="c-grey">//字符串，商品ID</span><br>
+										"pName":"保暖围巾",<span class="c-grey">//字符串，商品名字</span><br>
+										"startPrice":"1000.00",<span class="c-grey">//字符串，商品起拍价</span><br>
+										"maxPrice":"1000.00",<span class="c-grey">//字符串，商品最高价</span><br>
+										"startTime":"9：20"<span class="c-grey">//字符串，竞价的开始时间</span><br>
+										"endTime":"9：20"<span class="c-grey">//字符串，竞价的结束时间</span><br>
+										"imgLink":"sdasuhdiua"<span class="c-grey">//字符串，商品的图片链接</span><br>
+									</blockquote>
+								 }
+							 </blockquote>
+							]
+							</blockquote>
+							} 
+					</div>
+				</p>
+				<p>失败则返回
+				<div class="code">
+					{<blockquote>
+					"result":"failed",<br>
+					"reason":"服务器错误"
+					</blockquote>
+					} 
+				</div>
+				</p>
+			</p>
+			<h2 class="anchor">商家相关的接口</h2>
+			<p></p>
+			<!-- <p>所有好友相关的接口都遵循以下面的url格式<div class="code tc">&lt;项目地址&gt;?action=<span class="c-prink">Friend</span>&method=&lt;接口名&gt;</div></p>
+			<p>例如，获取好友列表的接口为<div class="code tc">&lt;项目地址&gt;?action=<span class="c-prink">Friend</span>&method=<span class="c-prink">getFriendsList</span></div></p> -->
+			
+
+			<h3 class="anchor">发布商品<span class="method-name">releaseProductServlet：post</span></h3>
+			<p>
+			<!-- 	<p>另外由于这个接口返回的数据比较少（只有好友的id和备注名），所以你还要通过其他的接口（如getUserById）获取一下用户的其它信息。</p> -->
+				<h4>接口地址</h4>
+				<div class="code tc">
+					&lt;项目地址&gt;/releaseProductServlet
+				</div>
+
+			<h4>请求参数</h4>
+			<p>
+				<div class="code">
+					{<blockquote>
+					productName:'冰箱'<span class="c-grey">//字符串，商品名</span><br>
+					productNum:'100'<span class="c-grey">//字符串，商品数量</span><br>
+					productImage:'asdjoaisdo'<span class="c-grey">//字符串，商品图片的base64格式</span><br>
+					beginTime:'2019-11-04 12:00'<span class="c-grey">//字符串，规定格式的时间</span><br>
+					endTime:'2019-11-04 12:00'<span class="c-grey">//字符串，规定格式的时间</span><br>
+					startPrice:'100'<span class="c-grey">//字符串，商品起拍价</span><br>
+					maxPrice:'100'<span class="c-grey">//字符串，商品最高价</span><br>
+					productDeposit:'100'<span class="c-grey">//字符串，商品的定金</span><br>
+					productExplain:'这是简介'<span class="c-grey">//字符串，商品简介</span></blockquote>
+					}
+				</div>
+			</p>
+			<h4>返回参数</h4><p>
+			<p>调用成功，则返回
+				<div class="code">
+					{
+						<blockquote>
+						"result":"success"<span class="c-grey">//字符串，表示成功状态，下同</span>
+						</blockquote>
+					}
+				</div></p><p>
+				调用失败，则返回
+				<div class="code">
+					{ 
+					<blockquote>
+						"result":"failed",<span class="c-grey">//字符串，表示失败状态，下同</span><br>
+						"reason":"unlog"<span class="c-grey">//字符串，提示信息，如未登录</span>
+					</blockquote>
+					} 
+				</div></p>
+			</p>
+ 
+
+
+
+		</div>
+		</div>
+	</div>
+	<div class="cb"></div>
+<body>
+<!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"></script> -->
+<script src="../script/jquery-1.10.2.min.js"></script>
+<script>
+$(document).ready(function(){
+	var index = 0;
+	var leftBarUl = $("#js-left-bar ul");//保留引用，减小dom查询带来的开销
+	$("#main-box .anchor").each(function(){
+		var title = $(this).html();
+		leftBarUl.append("<li><a class=\""+ $(this)[0].tagName +"\" href=\"#anchor"+index+"\">"+title+"</a></li>");
+		$(this).attr("id","anchor"+index);
+		index++;
+	});
+});
+</script>
+</html>
