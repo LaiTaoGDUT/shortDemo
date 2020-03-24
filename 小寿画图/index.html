@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8">
+  		<title>小寿画图</title>
+  		<link rel="stylesheet" href="css/paintTest.css" />
+  		<link rel="stylesheet" media="screen" type="text/css" href="css/colorpicker.css">
+  		<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+ 		<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.css" />
+		<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.structure.css" />
+ 		<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.theme.css" />
+ 		<script type="text/javascript" src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+ 		<script type="text/javascript" src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+  		<script type="text/javascript" src="js/paintTest.js"></script>
+  		<script type="text/javascript" src="js/getcanvaspixelcolor.js"></script>
+		<script type="text/javascript" src="js/colorpicker.js"></script>
+ 	</head>
+ 	<body>
+      
+       <div class="homePage">
+        <div class="header">
+          <div class="layout">
+            <div class="fleft">
+              <canvas class="logo" width="150" height="40" >抱歉！你的浏览器不支持canvas,请升级你的浏览器</canvas>
+            </div>
+            <div class="fright">
+              <p>18933247746</p>
+              <p>联系电话：</p>
+              <p>|</p>
+              <p>2550832054@qq.com</p>
+              <p>邮箱：</p>
+            </div>
+          </div>
+        </div>
+       
+        <div class="body">
+        	<img src="img/bg3.jpg" />
+        	<div class="entrance">
+        		<div class="paintSomething">
+        		 <img src="img/paintSomething.png" />
+        			<p>随便画画</p>
+        		</div>
+        		<div class="graffitiForPhotos">
+        			<img src="img/graffitiForPhotos.png" />
+        			<p>照片涂鸦</p>
+        		</div>
+        	</div>
+        </div> 
+        <div class="footer">
+        	<div class="contact">
+        		<div class="follow">
+              		<img src="img/advertisment.jpg" />
+              		<p>请我喝茶</p>
+        		</div>
+              	<div class="leave_word">
+              		<p>在线留言</p>
+              		<form action="/" method="get">
+              			<table border="0">
+                			<tr>
+                  				<td><input class="message" placeholder="姓名"></td>
+                  				<td rowspan="3"><textarea class="leave_word" placeholder="请输入您的留言内容"></textarea></td>
+                 				 <td rowspan="3"><input  class="submit" type="submit" value="提交"></td>
+                			</tr>
+                			<tr>
+                  				<td><input class="message" placeholder="电话"></td>
+                			</tr>
+                			<tr>
+                  				<td><input class="message" placeholder="邮箱"></td>
+                			</tr>
+              			</table>
+              		</form>
+            	</div>
+            	<div class="contact_information">
+              		<p>联系我们</p>
+              		<p>Add：小寿画图</p>
+              		<p>Wechat：laitaodeweixin</p>
+              		<p>网址：www.xiaoTao.net QQ: 2550832054</p>
+              		<p>EML：2550832054@qq.com</p>
+            	</div>
+            	<div style="clear: both"></div>
+        	</div>
+        </div>
+	  </div>
+	  
+	  <div class="Painting"  style="display: none">
+        <div class="header">
+          <div class="layout">
+            <div class="fleft">
+              <canvas class="logo2" width="150" height="40" >抱歉！你的浏览器不支持canvas,请升级你的浏览器</canvas>
+            </div>
+            <div class="fright">
+              <p>18933247746</p>
+              <p>联系电话：</p>
+              <p>|</p>
+              <p>2550832054@qq.com</p>
+              <p>邮箱：</p>
+            </div>
+          </div>
+        </div>
+        <div class="drawingArea">
+        	<img src="img/bg.jpg" />
+        	<div class="tools">
+        		<div class="color">
+        			<div style="background-color: black"></div>
+        			<div style="background-color: grey"></div>
+        			<div style="background-color: white"></div>
+        			<div style="background-color: #DB1115"></div>
+        			<div style="background-color: #050AE3"></div>
+        			<div style="background-color: #DC3F0B"></div>
+        			<div style="background-color: #EDCF05"></div>
+        			<div style="background-color: #09D921"></div>
+        			<div style="background-color: #99ff00"></div>
+        			<div style="background-color: #11DBBD"></div>
+        			<div style="background-color: #D501CE"></div>
+        			<div style="background-color: #999999"></div>
+        			<div style="background-color: #7D2323"></div>
+        			<div style="background-color: #94055E"></div>
+        			<div style="background-color: #DB89D9"></div>
+        			<div style="background-color: #63DB11"></div>
+        			<div style="background-color: #FBFF00"></div>
+        			<div style="background-color: #5E2000"></div>
+        			<div style="background-color: #00ff8c"></div>
+        			<div style="background-color: #9900ff"></div>
+        		</div>
+       			<div class="colorSelect">
+        			<span>边框色：</span>
+        			<div style="background-color: white" class="borderColorBorder">
+        				<div  class="borderColor" style="background-color: black"></div>
+        			</div>
+        			<span>填充色：</span>
+        			<div style="background-color: white" class="fillColorBorder">
+        				<div class="fillColor" style="background-color: black"></div>
+        			</div>
+        		</div>
+        		<div class="font">
+        			<span style="padding: 0.4em 0 0.4em 0">字体选择:</span>
+        			<span class="chooseFont1">
+        				<span class="icon"></span>
+        				<span class="chooseFontFamily">Arial</span>
+        			</span>
+        			<span style="padding: 0.4em 0 0.4em 0">字体大小:</span>
+        			<span class="chooseFont2">
+        				<span class="icon"></span>
+        				<span class="chooseFontNum">14px</span>
+        			</span>
+        		</div>
+        		<div class="pen">
+        			<div class="pencil">
+        				<img src="img/Pencil.gif" />
+        			</div>
+        			<div class="eraser">
+        				<img src="img/eraser.gif" />
+        			</div>
+        			<div class="fill">
+        				<canvas class="areaSelection" width="71" height="71"></canvas>
+        			</div>
+        			<div class="words">
+        				<img src="img/words.png" />
+        			</div>
+        			<div class="line"></div>
+        			<div class="circle"></div>
+        			<div class="rect"></div>
+        			<div class="ellipse"></div>
+        			<div class="regularTriangle"></div>
+        			<div class="heartShaped"></div>
+        			<div class="rightTriangle"></div>
+        			<div class="star"></div>
+        			<div class="prism"></div>
+        			<div class="topArrow"></div>
+        			<div class="pentagon"></div>
+        			<div class="rightArrow"></div>
+        		</div>
+        		<div class="width">
+        			<div style="border-color:#11DBBD"></div>
+        			<div style="background-position: 0 -40px"></div>
+        			<div style="background-position: 0 -80px"></div>
+        			<div style="background-position: 0 -120px"></div>
+        			<div style="background-position: 0 25px"><img src="img/lineWidthMore.png" /></div>
+        		</div>
+        	</div>
+        	<div class="option">
+        	
+        		<canvas class="optionLogo" width="150" height="40" >抱歉！你的浏览器不支持canvas,请升级你的浏览器</canvas>	
+        		<div class="save">
+					<p class="saveLogo">S</p>
+        			<span>保存</span>
+        		</div>
+           		<div class="empty">
+           			<img src="img/empty.png" />
+        			<span>清空</span>
+        		</div>
+        		<div class="goto">
+        		 <img src="img/goto.png" />
+        			<span>前进</span>
+        		</div>
+        		<div class="goback">
+        			<img src="img/goBack.png" />
+        			<span>后退</span>
+        		</div>
+        		<div class="return">
+        			<img src="img/homePage.png" />
+        			<span>首页</span>
+        		</div>
+        	</div>
+        	<div class="canvasBorder">
+        		<canvas class="canvas containerPencil" width="1360" height="764">抱歉！你的浏览器不支持canvas,请升级你的浏览器</canvas>
+        	</div>
+        	
+ 			<canvas class="paintingCanvas"></canvas>	
+  			<textarea rows="3" cols="20" class="wordTip"></textarea>
+			<div class="moveRect"></div>
+       		<div class="fontFamily">
+       			<ul class="fontFamilyList">
+       				<li>Arial</li>
+       				<li>Cambria</li>
+       				<li>仿宋</li>
+       				<li>Times</li>
+       				<li>serif</li>
+       			</ul>
+       		</div>
+       		
+       		<div class="fontSize">
+       			<ul class="fontSizeList">
+       				<li>10px</li>
+       				<li>14px</li>
+       				<li>18px</li>
+       				<li>22px</li>
+       				<li>26px</li>
+       				<li>30px</li>
+       				<li>34px</li>
+       				<li>38px</li>
+       				<li>42px</li>
+       				<li>46px</li>
+       				<li>50px</li>
+       				<li>54px</li>
+       				<li>58px</li>
+       				<li>62px</li>
+       				<li>66px</li>
+       				<li>70px</li>
+       			</ul>
+       		</div>
+        		
+         </div>
+        </div>
+        <div class="selectPhoto">
+        	<div class="box">
+        		<div class="content">
+        			<div class="text">
+        				<span>请选择一张照片</span>
+        				<br />
+        				<input class="input" type="file" multiple />
+        			</div>
+        		</div>
+     			<div class="choose">
+   	  				<span class="confirm">确认</span>
+   	  				<span class="cancel">取消</span>
+    			</div>
+        	</div>
+        </div>
+   		<div class="secondConfirm">
+    		<div class="exitBox">
+  				<div class="exitContent">
+  	  				<div class="exitText">
+  	  				确认返回首页吗？
+  	  	 			<br />
+  	 	 			未保存的图画将被清空！
+  	 			 </div>
+    		</div>
+    		<div class="choose">
+   	  			<span class="exit">退出</span>
+   	  			<span class="cancel">取消</span>
+   	 		</div>
+  		</div> 	
+	</div>
+
+ 	</body>
+</html>
