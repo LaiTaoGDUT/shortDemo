@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>操作系统课程设计</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="js/dataStruct.js" defer></script>
+    <script src="js/tools.js" defer></script>
+    <script src="js/input.js" defer></script>
+    <script src="js/index.js" defer></script>
+  </head>
+
+  <body>
+    <h1>多道批处理的两级调度</h1>
+    <div class="hide_one">
+        <div class="revise_box">
+            <div class="revise_content">
+                <div class="revise_text">
+                    <div class="timeInput">
+                        <div>
+                            输入当前时间：<br>
+                            <input type="value" > ：<input type="value" >  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="choose">
+                <span class="revise3">确认</span>
+                <span class="cancel">取消</span>
+            </div>
+        </div> 
+    </div>
+    <div class="hide_two">
+        <div class="revise_box">
+            <div class="revise_content">
+                <div class="revise_text">
+                    <div class="jobInput">
+                        <div>
+                            作业名字：<input type="value" ><br>
+                            作业到达时间：<input type="value" > ：<input type="value" ><br>
+                            作业需要的运行时间（分钟）：<input type="value" ><br> 
+                            需要内存：<input type="value" >KB<br>    
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="choose">
+                <span class="revise1">确认</span>
+                <span class="cancel">取消</span>
+            </div>
+        </div> 
+    </div>
+    <div class="hide_three">
+        <div class="revise_box">
+            <div class="revise_content">
+                <div class="revise_text">
+                    <div class="resouceInput">
+                    </div>
+                </div>
+            </div>
+            <div class="choose">
+                <span class="revise2">确认</span>
+                <span class="cancel">取消</span>
+            </div>
+        </div> 
+    </div>
+    <form action="#">
+
+    </form>
+    <div style="position: absolute;z-index: 100;color: black;">
+        <form action="/">
+            
+            <div style="display:flex; align-items:center">
+                <img src="images/play.png" id="play">
+                <div class="silde" style="display:flex; align-items:center">
+                    <div class="dropdown">
+                        <input type="button" value="算法选择菜单" class="button dropbtn" style="background-color: #4CAF50;">
+                        <div class="dropdown-content">
+                            <span>作业调度算法：</span>
+                            <input type="radio" id='aFCFS'name='aSelect' value="FCFS算法" checked class="radio"><label for="aFCFS">FCFS算法</label>
+                            <input type="radio" id='aJSF' name='aSelect' value="SJF算法" class="radio"><label for="aSJF">SJF算法</label><br>
+                            <span>进程调度算法：</span>
+                            <input type="radio" id="pSJF" name='pSelect' value="SJF算法" checked class="radio"><label for="pSJF">SJF算法</label>
+                            <input type="radio" id="pRR" name='pSelect' value="RR算法" onclick="changeProcessNumToOne()" class="radio"><label for="pRR">RR算法</label>
+                            <input type="radio" id="pMFQ" name='pSelect' value="MFQ算法" onclick="changeProcessNumToTwo()" class="radio"><label for="pMFQ">MFQ算法</label><br>
+                            <span>内存分配算法：</span>
+                            <input type="radio" id="mdFF" name='mDistribute' value="FF算法" checked class="radio"><label for="mdFF">FF算法</label>
+                            <input type="radio" id="mdNF" name='mDistribute' value="NF算法" class="radio"><label for="mdNF" >NF算法</label><br>
+                        </div>
+                    </div>
+                    <input type="button" value="设置系统资源"  onclick="inputResource()" class="button">
+                    <input type="button" value="设置道数"  onclick="setTrackNum()" class="button">
+                    <input type="button" value="设置系统内存"  onclick="setTotalMemory()" class="button">
+                    <input type="button" value="设置初始时间"  onclick="setCurrentTime()" class="button">
+                    <input type="button" value="设置时间片长度" onclick="setTimeSlice()" class="button">
+                    <input type="button" value="添加作业" onclick="addNewJob()" class="button">
+                    <input type="button" value="一键装入" onclick="addDefaultJob()" class="button">
+                </div>
+            </div>
+            <img src="images/refresh.png" class="refresh" onclick="refresh()"/> 
+        </form>
+    </div>
+    <div style="position: absolute; top: 450px; left: 20px;">
+        <input type="button" value="模拟结果" class="button dropbtn" style="background-color: #4CAF50;" onClick="switchTableShow()">
+        <div class="resultTable" style="text-align: center; overflow-y: scroll;white-space: nowrap; max-height: 200px">
+            <table class="hovertable">
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td>平均周转时间</td><td colspan="6" style="text-align: center;"><span class="turnaroundTime">0</span>(分)</td>
+            </tr>
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td>平均带权周转</td><td colspan="6" style="text-align: center;" class="totalTurnAround">0</td>
+            </tr>
+            <tr>
+                <th>作业名</th><th>到达时间</th><th>要求服务</th><th>开始运行</th><th>完成时间</th><th>周转时间</th><th>带权周转</th>
+            </tr>
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';" class="noResult">
+                <td colspan="7" style="text-align: center;">暂无已完成作业</td>
+            </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <canvas></canvas>
+  </body>
+</html>
