@@ -1,0 +1,168 @@
+@media screen and (max-device-width: 500px) {
+    .orangeColor {
+        color: orange !important;
+    }
+    .pcButtonColor {
+        color: black;
+    }
+    .container {
+        width: 100%;
+    }
+    .header_menu-pc {
+        display: none;
+    }
+
+    .header_menu-mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    .header_menu_icon {
+        margin-right: 3vw;
+        margin-left: 3vw;
+    }
+
+    .header_menu_set {
+        position: absolute;
+        display: none;
+        z-index: 100;
+    }
+
+    .header_menu_dropdown_menu {
+        background-color: #fffced;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        overflow: hidden;
+        padding-left: 0;
+        list-style-type: none;
+        margin: 0;
+        padding-left: 0;
+        list-style-type: none;
+    }
+
+    .header_menu_dropdown_menu a {
+        display: block !important;
+        text-decoration: none;
+        color: black;
+        font-size: 15px;
+        padding: 8px !important;
+        border-bottom: 0.4vh solid white;
+        text-align: left;
+    }
+
+    .header_menu_dropdown_menu li i {
+        margin-right: 8px;
+        display: inline-block;
+        vertical-align: middle;
+        background-size: 100% 100%;
+    }
+
+    .header_menu_dropdown_menu_login i {
+        background: url('../image/login2.png') no-repeat;
+    }
+
+    .header_menu_dropdown_menu_register i {
+        background: url('../image/logon2.png') no-repeat;
+    }
+
+    .header_menu_dropdown_menu_detail i {
+        background: url('../image/login2.png') no-repeat;
+    }
+
+    .header_menu_dropdown_menu_help i {
+        background: url('../image/help2.png') no-repeat;
+    }
+
+    .header_menu_dropdown_menu_about i {
+        background: url('../image/about2.png') no-repeat;
+    }
+
+    .header_menu_dropdown_menu_exit i {
+        background: url('../image/exit2.png') no-repeat;
+    }
+
+    .footer_onlineQueue, .footer_queueProgress {
+        margin: 0.5vh 0;
+    }
+
+    #content {
+        display: block;
+    }
+
+    .leftContent, .rightContent {
+        width: 100%;
+    }
+
+    .content_list_item {
+
+        padding: 2vh 0;
+        margin-bottom: 1vh;
+    }
+    .content_list_item_avatar {
+        margin:0 2vh;
+    }
+
+    .content_list_item_detail_score {
+        margin: 1.5vh 0;
+    }
+
+    .content_list_item_botton {
+        bottom: 2vh;
+        right: 2vh;
+    }
+    .content_list_item_detail_spend {
+        margin: 0 0 0 1.5vh;
+    }
+
+    .content_list_item_remain_check {
+        /* visibility: hidden; */
+        margin: 0 0 0 1vh;
+        -ms-transform: scale(1); /* IE */
+        -moz-transform: scale(1); /* FireFox */
+        -webkit-transform: scale(1); /* Safari and Chrome */
+        -o-transform: scale(1); /* Opera */
+        transform: scale(1);
+    }
+
+    .content_list_item_detail_remain {
+        margin: 1.4vh 0;
+    }
+
+    .overdue_nmuber_content_state {
+        margin: 2vh 0;
+    }
+
+    .overdue_nmuber_content_again {
+        bottom: 2vh;
+        right: 2vh;
+    }
+    .overdue_nmuber_content_again:active {
+        bottom: 0.99vh;
+    }
+    .content_list_item_botton:active {
+        bottom: 0.99vh;
+    }
+    .maskFloor_secondConfirmBox {
+        width: 80vw;
+        top: 45%;
+        left: 50%;
+    }
+
+    .maskFloor_secondConfirmBox_tipContent {
+        padding: 3.5vh;
+        font-size: 2.1vh;
+    }
+
+    .maskFloor_secondConfirmBox_judge {
+        height: 6vh !important;
+        font-size: 2vh;
+    }
+    .maskFloor_secondConfirmBox_judge_do, .maskFloor_secondConfirmBox_judge_cancel {
+        height: 6vh;
+        line-height: 6vh;
+        padding: 0 1vh;
+    }
+}

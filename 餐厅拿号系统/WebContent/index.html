@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>餐厅在线排队系统</title>
+    
+    <link rel="stylesheet" href="style/css_pc.css">
+    <link rel="stylesheet" href="style/css_mobile.css">
+    <link rel="stylesheet" href="style/animate.css">
+    <script src="JQuery/jquery-3.4.1.min.js"></script>
+    <script src="vueJs/vue.js"></script>
+    <script src="velocityJs/velocity.min.js"></script>
+    <script src="script/layoutSet.js"></script>
+
+</head>
+<body>
+  <div class="maskFloor_queueButton">
+    <div class="maskFloor_secondConfirmBox">
+  	    <div class="maskFloor_secondConfirmBox_tipContent">
+  	        <div class="maskFloor_secondConfirmBox_tipContent_text">
+  	  	        <span style="color: grey; padding-bottom: 2vh;display:block">提示！</span> 
+  	 	        请确认是否抢号
+  	        </div>
+        </div>
+        <div class="maskFloor_secondConfirmBox_judge">
+   	        <span class="maskFloor_secondConfirmBox_judge_do">确定</span>
+   	        <span class="maskFloor_secondConfirmBox_judge_cancel">取消</span>
+        </div>
+    </div> 	
+</div>
+
+
+
+    <div class="container">
+        <div id="header">
+            <div class="header_titleBar">
+                <div class="header_titleBar_title">
+                    餐厅在线排队系统
+                </div>
+            </div>
+            <div class="header_menu-pc">
+                <ul class="header_menu_list">
+                    <li class="header_menu_list_help"><a href="#">帮助</a></li>
+                    <li class="header_menu_list_about"><a href="#">关于我们</a></li>
+                    <li class="header_menu_list_register"><a href="#">注册</a></li>
+                    <li class="header_menu_list_login"><a href="#">登陆</a></li>
+                </ul>
+            </div>
+            <div class="header_menu-mobile">
+                <img src="image\iconfinder_ic_dehaze_48px_352302.png" class="header_menu_icon">
+                <!-- start of list -->
+                <div class="header_menu_set" style="display: none">
+                    <ul class="header_menu_dropdown_menu">
+                        <li>
+                            <a title="登陆" class="header_menu_dropdown_menu_login">
+                                <i></i>
+                                <span>登陆</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a title="注册" class="header_menu_dropdown_menu_register">
+                                <i></i>
+                                <span>注册</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a title="我的信息" class="header_menu_dropdown_menu_detail">
+                                <i></i>
+                                <span>我的信息</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a title="帮助" class="header_menu_dropdown_menu_help">
+                                <i></i>
+                                <span>帮助</span>
+                           </a>
+                        </li>
+                        <li>
+                            <a title="关于我们" class="header_menu_dropdown_menu_about">
+                                <i></i>
+                                <span>关于我们</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a title="退出登陆" class="header_menu_dropdown_menu_exit">
+                                <i></i>
+                                <span>退出登陆</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end of list -->
+            </div>
+        </div>
+        <div id="content">
+            <div class="leftContent" >
+                <div class="content_title">
+                    <i class="content_title_icon"></i>
+                    <div class="content_title_detail"><span>附近的餐厅</span></div>
+                </div>
+                <div class="content_list">
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">寿子湘菜馆</div>
+                            <div class="content_list_item_detail_score">
+                                <i class="lightStar"></i><i class="lightStar" ></i><i class="lightStar"></i><i class="lightStar"></i><i class="darkStar"></i>
+                                <span class="content_list_item_detail_spend">￥233/人</span>
+                            </div>
+                            <div class="content_list_item_detail_teamLength">
+                                <span>当前排队人数:</span>
+                                <span class="content_list_item_detail_teamLength_number">286</span>
+                                <span>桌</span>
+                            </div>
+                        </div>
+                        <a class="content_list_item_botton "  >
+                            立即抢号
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">寿子湘菜馆</div>
+                            <div class="content_list_item_detail_score">
+                                <i class="lightStar"></i><i class="lightStar" ></i><i class="lightStar"></i><i class="lightStar"></i><i class="darkStar"></i>
+                                <span class="content_list_item_detail_spend">￥233/人</span>
+                            </div>
+                            <div class="content_list_item_detail_teamLength">
+                                <span>当前排队人数:</span>
+                                <span class="content_list_item_detail_teamLength_number">286</span>
+                                <span>桌</span>
+                            </div>
+                        </div>
+                        <a class="content_list_item_botton  "  >
+                            立即抢号
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">寿子湘菜馆</div>
+                            <div class="content_list_item_detail_score">
+                                <i class="lightStar"></i><i class="lightStar" ></i><i class="lightStar"></i><i class="lightStar"></i><i class="darkStar"></i>
+                                <span class="content_list_item_detail_spend">￥233/人</span>
+                            </div>
+                            <div class="content_list_item_detail_teamLength">
+                                <span>当前排队人数:</span>
+                                <span class="content_list_item_detail_teamLength_number">286</span>
+                                <span>桌</span>
+                            </div>
+                        </div>
+                        <a class="content_list_item_botton  "  >
+                            立即抢号
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">寿子湘菜馆</div>
+                            <div class="content_list_item_detail_score">
+                                <i class="lightStar"></i><i class="lightStar" ></i><i class="lightStar"></i><i class="lightStar"></i><i class="darkStar"></i>
+                                <span class="content_list_item_detail_spend">￥233/人</span>
+                            </div>
+                            <div class="content_list_item_detail_teamLength">
+                                <span>当前排队人数:</span>
+                                <span class="content_list_item_detail_teamLength_number">286</span>
+                                <span>桌</span>
+                            </div>
+                        </div>
+                        <a class="content_list_item_botton  "  >
+                            立即抢号
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">寿子湘菜馆</div>
+                            <div class="content_list_item_detail_score">
+                                <i class="lightStar"></i><i class="lightStar" ></i><i class="lightStar"></i><i class="lightStar"></i><i class="darkStar"></i>
+                                <span class="content_list_item_detail_spend">￥233/人</span>
+                            </div>
+                            <div class="content_list_item_detail_teamLength">
+                                <span>当前排队人数:</span>
+                                <span class="content_list_item_detail_teamLength_number">286</span>
+                                <span>桌</span>
+                            </div>
+                        </div>
+                        <a class="content_list_item_botton  "  >
+                            立即抢号
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">寿子湘菜馆</div>
+                            <div class="content_list_item_detail_score">
+                                <i class="lightStar"></i><i class="lightStar" ></i><i class="lightStar"></i><i class="lightStar"></i><i class="darkStar"></i>
+                                <span class="content_list_item_detail_spend">￥233/人</span>
+                            </div>
+                            <div class="content_list_item_detail_teamLength">
+                                <span>当前排队人数:</span>
+                                <span class="content_list_item_detail_teamLength_number">286</span>
+                                <span>桌</span>
+                            </div>
+                        </div>
+                        <a class="content_list_item_botton  "  >
+                            立即抢号
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">寿子湘菜馆</div>
+                            <div class="content_list_item_detail_score">
+                                <i class="lightStar"></i><i class="lightStar" ></i><i class="lightStar"></i><i class="lightStar"></i><i class="darkStar"></i>
+                                <span class="content_list_item_detail_spend">￥233/人</span>
+                            </div>
+                            <div class="content_list_item_detail_teamLength">
+                                <span>当前排队人数:</span>
+                                <span class="content_list_item_detail_teamLength_number">286</span>
+                                <span>桌</span>
+                            </div>
+                        </div>
+                        <a class="content_list_item_botton  "  >
+                            立即抢号
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">寿子湘菜馆</div>
+                            <div class="content_list_item_detail_score">
+                                <i class="lightStar"></i><i class="lightStar" ></i><i class="lightStar"></i><i class="lightStar"></i><i class="darkStar"></i>
+                                <span class="content_list_item_detail_spend">￥233/人</span>
+                            </div>
+                            <div class="content_list_item_detail_teamLength">
+                                <span>当前排队人数:</span>
+                                <span class="content_list_item_detail_teamLength_number">286</span>
+                                <span>桌</span>
+                            </div>
+                        </div>
+                        <a class="content_list_item_botton  "  >
+                            立即抢号
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="rightContent" style="display: none">
+                <div class="content_title my_nmuber">
+                    <i class="content_title_icon"></i>
+                    <div class="content_title_detail"><span>我的排号单</span></div>
+                </div>
+                <div class="my_number_content">
+                    <div class="content_list_item" style="margin-bottom: 0vh">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">姐妹寿司店</div>
+                            <div class="content_list_item_detail_remain">
+                                <span>还有:</span>
+                                <span class="content_list_item_detail_remain_number" style="font-weight:600">88</span>
+                                <span>桌</span>
+                            </div>
+                            <div class="content_list_item_detail_expectWaitTime">
+                                <span>预计等待:</span>
+                                <span class="content_list_item_detail_expectWaitTime_number" style="font-weight:600">66</span>
+                                <span>分钟</span>
+                            </div>
+                        </div>
+                        <div class="content_list_item_remain">
+                            <span>剩余十桌时提醒我</span>
+                            <label class="content_list_item_remain_control"></label>
+                        </div>
+                        <div class="content_list_item_openDetails">
+                            <i class="content_title_icon"></i>
+                            <span class="content_title_detail">详情</span>
+                        </div>
+                    
+                    </div>
+                    <div  class="my_number_content_openDetails" style="display: none">
+                        <div>
+                            <div class="my_number_content_openDetails_item">
+                                <span>当前叫号：</span>
+                                <span class="current_call_number" >134</span>
+                            </div>
+                            <div class="my_number_content_openDetails_item">
+                                <span>我的号码：</span>
+                                <span class="current_call_number">222</span>
+                            </div>
+                            <div class="my_number_content_openDetails_item" style="color:red">
+                                <span>我的取号凭证：</span>
+                                <span class="current_call_number">569875</span>
+                            </div>
+                            <div class="advertisment">
+                                <img src="image/advertisment.jpg" style="width: 10vh; height: 10vh;border: 0.2vh solid blue">
+                                <span style="font-size: 2vh;margin: 1vh 0 0 0;display:block">扫码获取更多信息！</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content_title overdue_nmuber">
+                    <i class="content_title_icon"></i>
+                    <div class="content_title_detail"><span>历史订单</span></div>
+                </div>
+                <div class="content_list overdue_number_content">
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">汝好茶餐厅</div>
+                            <div class="overdue_nmuber_content_state">
+                                <span> ! 已就餐</span>
+                            </div>
+                            <div class="overdue_nmuber_content_time">
+                                    <span>时间：4-24 19:01</span>
+                            </div>
+                        </div>
+                        <div class="overdue_nmuber_content_comment">
+                            <span>去评价</span>
+                        </div>
+                        <a class="overdue_nmuber_content_again"  >
+                            再来一单
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">汝好茶餐厅</div>
+                            <div class="overdue_nmuber_content_state">
+                                <span> ! 已过号</span>
+                            </div>
+                            <div class="overdue_nmuber_content_time">
+                                    <span>时间：4-24 19:01</span>
+                            </div>
+                        </div>
+                        <div class="overdue_nmuber_content_comment">
+                            <span>去评价</span>
+                        </div>
+                        <a class="overdue_nmuber_content_again"  >
+                            再来一单
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">汝好茶餐厅</div>
+                            <div class="overdue_nmuber_content_state">
+                                <span> ! 已就餐</span>
+                            </div>
+                            <div class="overdue_nmuber_content_time">
+                                    <span>时间：4-24 19:01</span>
+                            </div>
+                        </div>
+                        <div class="overdue_nmuber_content_comment">
+                            <span>去评价</span>
+                        </div>
+                        <a class="overdue_nmuber_content_again"  >
+                            再来一单
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">汝好茶餐厅</div>
+                            <div class="overdue_nmuber_content_state">
+                                <span> ! 已就餐</span>
+                            </div>
+                            <div class="overdue_nmuber_content_time">
+                                    <span>时间：4-24 19:01</span>
+                            </div>
+                        </div>
+                        <div class="overdue_nmuber_content_comment">
+                            <span>去评价</span>
+                        </div>
+                        <a class="overdue_nmuber_content_again"  >
+                            再来一单
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">汝好茶餐厅</div>
+                            <div class="overdue_nmuber_content_state">
+                                <span> ! 已就餐</span>
+                            </div>
+                            <div class="overdue_nmuber_content_time">
+                                    <span>时间：4-24 19:01</span>
+                            </div>
+                        </div>
+                        <div class="overdue_nmuber_content_comment">
+                            <span>去评价</span>
+                        </div>
+                        <a class="overdue_nmuber_content_again"  >
+                            再来一单
+                        </a>
+                    </div>
+                    <div class="content_list_item">
+                        <img src="image/avatar.png" alt="" class="content_list_item_avatar">
+                        <div class="content_list_item_detail">
+                            <div class="content_list_item_detail_shopName">汝好茶餐厅</div>
+                            <div class="overdue_nmuber_content_state">
+                                <span> ! 已就餐</span>
+                            </div>
+                            <div class="overdue_nmuber_content_time">
+                                    <span>时间：4-24 19:01</span>
+                            </div>
+                        </div>
+                        <div class="overdue_nmuber_content_comment">
+                            <span>去评价</span>
+                        </div>
+                        <a class="overdue_nmuber_content_again"  >
+                            再来一单
+                        </a>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        <div id="footer">
+           <div class="footer_onlineQueue pcButtonColor orangeColor">
+               <div class="footer_onlineQueue_name">在线排队</div>
+           </div>
+            <div class="footer_queueProgress pcButtonColor">
+                <div class="footer_queueProgress_name">排队进度</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script/pageControl.js"></script>
+<script src="script/dataExchange.js"></script>
+</html>

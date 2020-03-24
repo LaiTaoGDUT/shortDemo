@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>餐厅取号系统</title>
+    <link rel="stylesheet" href="style/login_pc.css">
+    <link rel="stylesheet" href="style/login_mobile.css">
+    <link rel="stylesheet" href="style/font-awesome.min.css">
+    <script src="JQuery/jquery-3.4.1.min.js"></script>
+    <script src="script/restaurantPageControl.js"></script>
+</head>
+<body>
+    <div class="menu_fixedHeader">
+        <div class="inner">
+            <div class="mobile_login_menu">
+                <a href="#" class="mobile_menu"></a>
+            </div>
+            <div class="mobile_logo">
+                <img src="image/logo.png">
+            </div>
+            <div class="mobile_login_btn">
+                <a href="#">
+                        <svg style="width:20px;height:20px;position:relative;top:0px;" xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 1024 1024" version="1.1" onmouseover="this.getElementsByClassName('svgpath')[0].style.fill='#000'" onmouseout="this.getElementsByClassName('svgpath')[0].style.fill=''">
+                            <path class="svgpath" fill="" d="M770.858667 576.597333c-9.258667-7.253333-22.442667-5.418667-29.525334 4.096s-5.333333 22.997333 3.925334 30.250667c90.538667 70.912 144.725333 176.256 150.698666 291.669333H128.085333C139.050667 695.466667 307.029333 530.261333 512 530.261333c117.845333 0 213.674667-98.176 213.674667-218.922666 0-120.661333-95.829333-218.922667-213.674667-218.922667-117.802667 0-213.632 98.261333-213.632 218.922667a218.88 218.88 0 0 0 108.885333 189.568C222.592 548.992 85.333333 720.256 85.333333 924.16v21.589333h853.333334v-21.589333c0-137.344-61.184-263.978667-167.808-347.562667zM340.48 311.338667c0-96.896 76.970667-175.744 171.52-175.744 94.592 0 171.562667 78.848 171.562667 175.744S606.592 487.082667 512 487.082667c-94.549333 0-171.52-78.848-171.52-175.744z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="menu_film" style="display:none"></div>
+    <div class="menu_wrapper">
+        <div class="menu_container">
+            <div class="login_btn_container">
+                <div class="menu_login_btn">
+                    <a href="#">登录</a>
+                </div>
+                <!-- <div class="menu_register_btn">
+                    <a href="#">注册</a>
+                </div> -->
+                <div style="clear: both"></div>
+            </div>
+            <div class="menu_container_top" style="display:none">
+                <div style="padding: 15px 20px">
+                欢迎你！<span class="user">淅淅沥沥</span>
+                <a class="logout">退出</a>
+                </div>
+            </div>
+            <ul style="margin-top: 20px">
+                <li class="menu_item"><a class="my_main"><span>首页</span></a></li>
+                <li class="menu_item"><a><span>人气美食</span></a></li>
+                <li class="menu_item"><a><span>联系我们</span></a></li>
+                <li class="menu_item"><a class="about_us"><span>关于我们</span></a></li>
+                <li class="menu_item"><a><span>帮助</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="page">
+        <div id="top_bar">
+            <div class="wf_wrap">
+                <div class="wf_table">
+                    <div class="wf_left">
+                        <p>欢迎访问餐厅取号系统!</p>   
+                    </div>
+                    <div class="wf_right">
+                        <div class="welcome" style="display:none">
+                            欢迎你！
+                            <span class="user">淅淅沥沥</span>
+                            <a class="logout">退出</a>
+                        </div>
+                        <div class="without_login">
+                                <a>
+                                    <span class="icon_user"></span>
+                                    登陆
+                                </a>
+                                <!-- <a href="/register.html">
+                                    <span class="icon_signin"></span>
+                                    注册
+                                </a> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header">
+            <div class="header_wrap">
+                <div class="header_table">
+                    <div class="header_left">
+                        <img src="image/logo.png" style="width: 112px; height: 57px;">
+                    </div>
+                    <div class="header_right">
+                        <div>
+                            <div class="phone_border">
+                                <div class="phone">
+                                    <span class="icon_phone"></span>
+                                    020-666-666
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="navigation_holder">
+                <ul class="main_nav">
+                    <li>
+                        <a class="my_main">
+                            <span>首页</span> 
+                        </a>
+                    </li>
+                    <li>
+                        <a >
+                            <span>人气美食</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="about_us">
+                            <span>关于我们</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span>联系我们</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span>帮助</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="main_login">
+            <div class="login_wrap">
+                <div class="header_background">
+                    <div class="background_media"></div>
+                    <div class="background_mask"></div>
+                </div>
+            </div>
+            <div class="main_content">
+                <div class="main_container">
+                    <div class="rqs_row">
+                        <div class="main_form">
+                            <div class="form_body">
+                                <form class="form_login">
+                                    <div class="form_login_margin">
+                                        <div class="user_label">餐厅账号</div>
+                                        <div class="user_input">
+                                            <input type="text" id="login_user_id" placeholder="6~16位纯数字">
+                                            <div class="pass_warning login_user_id_warning" style="display: none">
+                                                无效的账号。
+                                            </div>
+                                            <div class="user_clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="form_pass_margin">
+                                        <div class="pass_label">餐厅密码</div>
+                                        <div class="pass_input">
+                                            <input type="password" id="login_user_password" placeholder="6~16位数字或字母组合">
+                                            <div class="pass_warning login_user_password_warning" style="display: none">
+                                                密码错误。
+                                            </div>
+                                            <div class="user_clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="user_column">
+                                        <div class="user_compact">
+                                            <div class="user_input">
+                                                <div class="user_checkbox">
+                                                    <label class="user_checkbox_label">
+                                                        <input type="checkbox">
+                                                        记住我（请在私人设备上使用此功能）
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="user_submit">
+                                        <input type="submit" class="login_btn" value="登录">
+                                        <!-- <input type="submit" class="register_btn" value="注册"> -->
+                                        <a href="#" class="forget_pass">忘记密码？点这里找回</a>
+                                        <div class="user_clear"></div>
+                                    </div>
+                                </form>
+                                <form class="form_register"  style="display: none">
+                                    <div class="form_register_margin">
+                                        <div class="user_label">用户账号</div>
+                                        <div class="user_input">
+                                            <input type="text" id="register_user_id" placeholder="6~16位纯数字">
+                                            <div class="pass_warning register_user_id_warning" style="display: none">
+                                                无效的用户账号。
+                                            </div>
+                                            <div class="user_clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="form_name_margin">
+                                            <div class="user_label">用户名</div>
+                                            <div class="user_input">
+                                                <input type="text" id="register_user_name" placeholder="1~6位字符串">
+                                                <div class="pass_warning register_user_name_warning" style="display: none">
+                                                    无效的用户名。
+                                                </div>
+                                                <div class="user_clear"></div>
+                                            </div>
+                                        </div>
+                                    <div class="user_clear"></div>
+                                    <div class="form_pass_margin">
+                                        <div class="pass_label">密码</div>
+                                        <div class="pass_input">
+                                            <input type="password" id="register_user_password" placeholder="6~16位数字或字母组合">
+                                            <div class="pass_warning register_user_password_warning" style="display: none">
+                                                密码错误。
+                                            </div>
+                                            <div class="user_clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="form_passAgain_margin">
+                                        <div class="pass_label">再输一次密码</div>
+                                        <div class="pass_input">
+                                            <input type="password" id="register_user_password_again">
+                                            <div class="pass_warning register_user_password_again_warning" style="display: none">
+                                                密码错误。
+                                            </div>
+                                            <div class="user_clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="form_passStrength_margin">
+                                        <div class="user_input">
+                                            <span class="strength_text">密码强度</span>
+                                            <div class="user_clear"></div>
+                                            <span class="strength_cotainer">
+                                                <span class="strength_plain"></span>
+                                                <span class="strength_plain"></span>
+                                                <span class="strength_plain"></span>
+                                                <span class="strength_plain"></span>
+                                                <span class="strength_plain"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="user_column">
+                                        <div class="register_compact">
+                                            <div class="register_input">
+                                                <div class="user_checkbox">
+                                                    <label class="register_checkbox_label">
+                                                        <input type="checkbox">
+                                                        我同意《用户手册》和《保密条款》 
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="user_clear"></div>
+                                    <div class="user_submit">
+                                        <input type="submit" class="register_register_btn" value="注册">
+                                        <input type="submit" class="register_login_btn" value="已经有账号了？请登陆">
+                                        <div class="user_clear"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="login_explain">
+                            <div class="explain_wrapper">
+                                <div>说明：</div>
+                                <ol>
+                                    <li>餐厅取号系统餐厅端暂时不提供注册，餐厅入驻请联系管理员</li>
+                                    <li>慢慢地迈向听朝，静静地回望昨日，再决定今天只要相信爱</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user_clear"></div>
+        </div>
+        <div id="main_content" style="display: none">
+            <div class="main_wrap">
+                <!-- <div class="main_background">
+                    <div class="background_rotation rotation1" style="opacity: 1;"></div>
+                    <div class="background_rotation rotation2" style="opacity: 0;"></div>
+                    <div class="background_rotation rotation3" style="opacity: 0;"></div>
+                    <div class="background_overlay"></div>
+                    <div class="main_content_container">
+                        <div class="container_inner1" style="display: block;">
+                            <div class="container_bigSize">尊重食材本身的味道</div>
+                            <div class="container_smallSize">Respect the Original Taste of Food</div>
+                        </div>
+                        <div class="container_inner2" style="display: none;">
+                            <div class="container_bigSize">跟随美其林三星标准</div>
+                            <div class="container_smallSize">Following Michelin Three-star Strandard</div>
+                        </div>
+                        <div class="container_inner3" style="display: none;">
+                            <div class="container_bigSize">美味源自我们的用心</div>
+                            <div class="container_smallSize">Deliciousness comes from our intentions</div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="restaurant_wrap">
+                    <div class="header_background">
+                        <div class="background_media"></div>
+                        <div class="background_mask"></div>
+                    </div>
+                </div>
+                <!-- <div class="main_background_footer">
+                    <div class="main_background_footer_overlay">
+                    </div>
+                    <div class="main_background_footer_container">
+                        <div style="padding: 0 40px">
+                            <div style="width: 100%">
+                                <div class="main_background_footer_column_inner">
+                                    <div class="main_background_footer_column_inner_text">
+                                        <span style="display:block">更多餐厅 即将入驻</span>
+                                    </div>
+                                    <div style="text-align: center">
+                                        <div class="main_background_footer_column_inner_btn">了解最新资讯</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="separate">
+                    <div class="separate_background">
+                    </div>
+                </div> -->
+                <!-- <div class="shopCard">
+                    <div class="shopCard_content">
+                        <div>
+                            <div class="shopCard_leftContent">
+                                <div class="shopCard_leftContent_inner">
+                                    <div class="shopCard_leftContent_inner_background" style="background-image: url('image/麦当当.png');"></div>
+                                    <div class="shopCard_leftContent_inner_background_mask"></div>
+                                    <div class="shopCard_leftContent_content">
+                                        <div class="shopCard_leftContent_content_inner">
+                                            <div style="position: relative">
+                                                <div>
+                                                    <img src="image/location.png" width="27" height="35">
+                                                </div>
+                                                <div>
+                                                    <span style="font-family:'楷体';font-size: 16px; font-weight: 600">McDonald's</span>
+                                                </div>
+                                                <div>
+                                                    <span style="font-family:'楷体';font-size: 16px; font-weight: 600">麦当当</span>
+                                                </div>
+                                                <div>
+                                                    <span style="font-family:'楷体';font-size: 16px; font-weight: 600">★★★★★</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shopCard_rightContent">
+                                <div class="shopCard_rightContent_inner">
+                                    <div class="shopCard_leftContent_content">
+                                        <div class="shopCard_leftContent_content_title">
+                                            <div style="position:relative">
+                                                <span style="font-family:'宋体';font-size: 28px;">麦当当</span>
+                                            </div>
+                                        </div>
+                                        <div class="shopCard_leftContent_content_details">
+                                            <div style="position:relative">
+                                                <span>
+                                                    麦当当（McDonald's）是全球大型跨国连锁餐厅，1955年创立于美国芝加哥,麦当劳遍布全球六大洲119个国家，拥有约32000间分店，在很多国家代表着一种美式生活方式。
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="shopCard_leftContent_content_details">
+                                            <div style="position:relative">
+                                                <span style="font-size: 11px;line-height: 1.4em">
+                                                    McDonald's is a large multinational restaurant chain in the world. It was founded in Chicago in 1955. McDonald's has about 32,000 outlets in 119 countries on six continents. It represents an American lifestyle in many countries.
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="shopCard_leftContent_content_btn">
+                                            <div class="shopCard_leftContent_content_btn_container">
+                                                <div class="shopCard_leftContent_content_btn_inner">
+                                                    <div style="z-index: 3;position: relative;">
+                                                        <div class="ordering_meals">
+                                                            <div>
+                                                                <div class="read_more">
+                                                                    <span>了解更多店铺信息</span>
+                                                                </div>
+                                                                <div class="queue_immediately" id="6326060">
+                                                                    <i></i>
+                                                                    <span style="font-family:'楷体';font-size: 22px;line-height: 1.6em">立即取号</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-family:'楷体';font-size: 13px; font-weight: 600;line-height: 1.6em">￥65/人 ★★★★★</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user_clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shopCard_separate">
+                    <div class="shopCard_separate_container">
+                        <div style="padding: 0 40px">
+                            <div class="shopCard_separate_container_border"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shopCard">
+                    <div class="shopCard_content">
+                        <div>
+                            <div class="shopCard_leftContent">
+                                <div class="shopCard_leftContent_inner">
+                                    <div class="shopCard_leftContent_inner_background" style="background-image: url('image/广工二饭.png');"></div>
+                                    <div class="shopCard_leftContent_inner_background_mask"></div>
+                                    <div class="shopCard_leftContent_content">
+                                        <div class="shopCard_leftContent_content_inner">
+                                            <div style="position: relative">
+                                                <div>
+                                                    <img src="image/location.png" width="27" height="35">
+                                                </div>
+                                                <div>
+                                                    <span style="font-family:'楷体';font-size: 16px; font-weight: 600">GDUTSecondDiningHall</span>
+                                                </div>
+                                                <div>
+                                                    <span style="font-family:'楷体';font-size: 16px; font-weight: 600">广工二饭</span>
+                                                </div>
+                                                <div>
+                                                    <span style="font-family:'楷体';font-size: 16px; font-weight: 600">★★★★★</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shopCard_rightContent">
+                                <div class="shopCard_rightContent_inner">
+                                    <div class="shopCard_leftContent_content">
+                                        <div class="shopCard_leftContent_content_title">
+                                            <div style="position:relative">
+                                                <span style="font-family:'宋体';font-size: 28px;">广工二饭</span>
+                                            </div>
+                                        </div>
+                                        <div class="shopCard_leftContent_content_details">
+                                            <div style="position:relative">
+                                                <span>
+                                                        崭新的桌椅，窗边设有舒适的沙发软座，墙壁上挂着高清液晶电视，天花板上挂着彩色工艺吊灯，还有空调和wifi供应，这是哪家高级餐厅？简直不敢相信这是理工大学的餐厅。
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="shopCard_leftContent_content_details">
+                                            <div style="position:relative">
+                                                <span style="font-size: 11px;line-height: 1.4em">
+                                                        New tables and chairs, comfortable sofa soft seats by the window, high-definition LCD TV hanging on the wall, color craft chandeliers hanging on the ceiling, air conditioning and WiFi supply, which is the high-end restaurant? I can't believe it's a dining room at Polytechnic.
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="shopCard_leftContent_content_btn">
+                                            <div class="shopCard_leftContent_content_btn_container">
+                                                <div class="shopCard_leftContent_content_btn_inner">
+                                                    <div style="z-index: 3;position: relative;">
+                                                        <div class="ordering_meals">
+                                                            <div>
+                                                                <div class="read_more">
+                                                                    <span>了解更多店铺信息</span>
+                                                                </div>
+                                                                <div class="queue_immediately" id="6326061">
+                                                                    <i></i>
+                                                                    <span style="font-family:'楷体';font-size: 22px;line-height: 1.6em">立即取号</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-family:'楷体';font-size: 13px; font-weight: 600;line-height: 1.6em">￥10/人 ★★★★★</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user_clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shopCard_separate">
+                    <div class="shopCard_separate_container">
+                        <div style="padding: 0 40px">
+                            <div class="shopCard_separate_container_border"></div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="call_nmuber_content">
+                    <div class="call_nmuber_content_inner">
+                        <div class="call_number_content_inner_left">
+                            当前叫号：
+                        </div>
+                        <div class="call_number_content_inner_Number">
+                           12
+                        </div>
+                        <div class="call_number_content_inner_next">
+                            <div style="display: table">
+                                <div class="call_number_next_button">
+                                    下一号
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="total_number_content">
+                    <div class="total_number_inner">
+                        号码总数：
+                        <span class="total_number_inner_number">23</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main_order" style="display: none">
+            <div class="login_wrap">
+                <div class="header_background">
+                    <div class="background_media"></div>
+                    <div class="background_mask"></div>
+                </div>
+            </div>
+            <div class="no_order_msg" style="display: none">
+                没有更多拿号信息
+            </div>
+            <div class="order_content">
+                <div class="order_container">
+                    <div class="order_leftContent">
+                        <div class="order_leftContent_inner">
+                            <div class="separate">
+                                <div class="separate_text">
+                                    当前订单
+                                </div>
+                            </div>
+                            <div class="order_leftContent_inner_content">
+                                <ul>
+                                    <!-- <li class="order_list">
+                                        <div>
+                                            <div class="order_list_img">
+                                                <img src="image/麦当当.png">
+                                            </div>
+                                            <div class="order_list_content">
+                                                <div class="order_list_content_time">2019-5-18 12:40</div>
+                                                <div class="order_list_content_title">
+                                                    麦当当
+                                                </div>
+                                                <div class="order_list_content_remain">
+                                                    剩余桌数：
+                                                    <span>8</span>
+                                                </div>
+                                                <div class="order_list_content_expectWait">
+                                                    预计等待：
+                                                    <span>30</span>
+                                                    分钟
+                                                </div>
+                                                <div class="order_list_content_myNumber">
+                                                    我的号码：
+                                                    <span>23</span>
+                                                </div>
+                                                <div class="order_list_content_callNumber">
+                                                    取号凭证：
+                                                    <span>182374</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li> -->
+                                </ul>
+                            </div>
+                            <div class="separate">
+                                <div class="separate_text">
+                                    历史订单
+                                </div>
+                            </div>
+                            <div class="history_leftContent_inner_content">
+                                    <ul>
+                                        <li class="order_list">
+                                            <div>
+                                                <div class="order_list_img">
+                                                    <img src="image/麦当当.png">
+                                                </div>
+                                                <div class="order_list_content">
+                                                    <div class="order_list_content_time">2019-5-18 12:40</div>
+                                                    <div class="order_list_content_again">再来一单</div>
+                                                    <div class="order_list_content_title">
+                                                        麦当当
+                                                    </div>
+                                                    <div class="order_list_content_state">
+                                                        就餐状态：
+                                                        <span>已就餐</span>
+                                                    </div>
+                                                    <div class="order_list_content_myComment">
+                                                        我的评价：
+                                                        <span>未评价</span>
+                                                        <span class="write_comment">去评价</span>
+                                                    </div>
+                                                    <div class="order_list_content_myNumber">
+                                                        我的号码
+                                                        <span>12</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <div class="order_separate">
+                                            <div class="shopCard_separate_container">
+                                                <div>
+                                                    <div class="shopCard_separate_container_border"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <li class="order_list">
+                                            <div>
+                                                <div class="order_list_img">
+                                                    <img src="image/广工二饭.png">
+                                                </div>
+                                                <div class="order_list_content">
+                                                    <div class="order_list_content_time">2019-5-18 12:40</div>
+                                                    <div class="order_list_content_again">再来一单</div>
+                                                    <div class="order_list_content_title">
+                                                        广工二饭
+                                                    </div>
+                                                    <div class="order_list_content_state">
+                                                        就餐状态：
+                                                        <span>已就餐</span>
+                                                    </div>
+                                                    <div class="order_list_content_myComment">
+                                                        我的评价：
+                                                        <span>未评价</span>
+                                                        <span class="write_comment">去评价</span>
+                                                    </div>
+                                                    <div class="order_list_content_myNumber">
+                                                        我的号码：
+                                                        <span>182374</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="user_clear"></div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="wf_wrap">
+                <div class="wf_continer">
+                    <div class="widget_container footer1">
+                        <div class="horizon_menu">
+                            <ul class="menu">
+                                <li><a href="#"><span>首页</span></a></li>
+                                <li><a href="#"><span>我的叫号</span></a></li>
+                                <li><a href="#"><span>人气美食</span></a></li>
+                                <li><a href="#"><span>关于我们</span></a></li>
+                                <li><a href="#"><span>联系我们</span></a></li>
+                                <li><a href="#"><span>帮助</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="wf_container footer2">
+                    <div class="bit_post_list">
+                        <div class="bit_widget_frame">
+                            <ul class="gallery_icon_list">
+                                <li><span class="facebook_icon"></span></li>
+                                <li><span class="vedio_icon"></span></li>
+                                <li><span class="linkedin_icon"></span></li>
+                                <li><span class="twitter_icon"></span></li>
+                                <!-- <li><span class="google_icon"></span></li> -->
+                                <li><span class="wechat_icon"></span></li>
+                                <li style="clear:both"></li>
+                            </ul>
+                        </div>
+                    </div> 
+                    <div class="bit_post_list">
+                        <div class="bit_widget_frame">
+                            <img src="image/logo2.png" style="width:124px; height: 54px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bottom_bar">
+            <div class="wf_wrap">
+                <div class="wf_table" style="display:flex;justify-content: center">
+                    <span>
+                        版权所有
+                        <small>©</small>
+                        2020 餐厅取号系统.  ICP备666666666号-1
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
