@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频淡入淡出示例</title>
+</head>
+<body>
+    <audio
+        crossOrigin="anonymous"
+        id="source"
+        preload="auto"
+        src="http://m7.music.126.net/20200912222429/1829ef77832a67133b17d5d75e54e53b/ymusic/obj/w5zDlMODwrDDiGjCn8Ky/3417870792/2acb/4860/ece4/8ea39fc7319801d35e77331f3c0b1003.flac"
+    >
+    </audio>
+    <button id="play" onClick="switchPlay()">淡入</button>
+    <button id="play2" onClick="switchPlay2()">播放</button>
+</body>
+<script>
+    const audio = document.querySelector('#source')
+    audio.volume = 0
+    const playBtn = document.querySelector('#play')
+    const playBtn2 = document.querySelector('#play2')
+    let volumeFadeInFlag = null
+    let volumeFadeOutFlag = null
+    let fadeVolume = 0
+    let volume = 1
+    let playStatus = false
+    function switchPlay() {
+        if (!playStatus) {
+            playBtn.innerText = '淡出'
+            playBtn2.innerText = '暂停'
+            play()
+        } else {
+            playBtn.innerText = '淡入'
+            playBtn2.innerText = '播放'
+            pause()
+        }
+        playStatus = !playStatus
+    }
+    function switchPlay2() {
+        if (!playStatus) {
+            playBtn.innerText = '淡出'
+            playBtn2.innerText = '暂停'
+            audio.volume = 1
+            audio.play()
+        } else {
+            playBtn2.innerText = '播放'
+            playBtn.innerText = '淡入'
+            audio.volume = 0
+            audio.pause()
+        }
+        playStatus = !playStatus
+    }
+    function pause() {
+      volumeFadeInFlag && cancelAnimationFrame(volumeFadeInFlag);
+      (function fadeOut () {
+        if (fadeVolume - 0.02 <= 0) {
+          fadeVolume = 0
+          audio.volume = fadeVolume
+          cancelAnimationFrame(volumeFadeOutFlag)
+          volumeFadeOutFlag = null
+          audio.pause()
+        } else {
+          fadeVolume = fadeVolume - 0.02
+          fadeVolume = Number(fadeVolume.toFixed(2))
+          audio.volume = fadeVolume
+          volumeFadeOutFlag = requestAnimationFrame(fadeOut)
+        }
+      })()
+    }
+    function play() {
+      volumeFadeOutFlag && cancelAnimationFrame(volumeFadeOutFlag)
+      audio.play();
+      (function fadeIn () {
+        if (fadeVolume + 0.02 >= volume) {
+          fadeVolume = volume
+          audio.volume = fadeVolume
+          cancelAnimationFrame(volumeFadeInFlag)
+          volumeFadeInFlag = null
+        } else {
+          fadeVolume = fadeVolume + 0.02
+          fadeVolume = Number(fadeVolume.toFixed(2))
+          audio.volume = fadeVolume
+          volumeFadeInFlag = requestAnimationFrame(fadeIn)
+        }
+      })()
+    }
+</script>
+</html>
