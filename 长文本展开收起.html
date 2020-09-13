@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .desc-box {
+        position: relative;
+        padding-bottom: 10px;
+        max-width: 800px;
+        margin: auto;
+        }
+        .desc-content {
+            overflow: hidden;
+            height: 60px;
+            font-size: 14px;
+            line-height: 22px;
+        }
+        pre {
+            white-space: pre-wrap;
+            margin-bottom: 0;
+            font-size: 14px;
+            line-height: 22px;
+        }
+        .show-more {
+            display: flex;
+            align-content: center;
+            height: 22px;
+            font-size: 14px;
+            position: absolute;
+            z-index: 2;
+            bottom: 10px;
+            right: 0px;
+        }
+        em {
+            height: 22px;
+            width: 20px;
+            background: -webkit-linear-gradient(left, rgba(255,255,255,0),rgba(255,255,255,1));
+        }
+        .more-link {
+            background: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="desc-box" :class="{'desc-show-full': showMore}">
+        <div class="desc-content" >
+          <pre>可是我再也没遇到一个像福贵这样令我难忘的人了，对自己的经历如此清楚，又能如此精彩地讲述自己。他是那种能够看到自己过去模样的人，他可以准确地看到自己年轻时走路的姿态，甚至可以看到自己是如何衰老的。这样的老人在乡间实在难以遇上，也许是困苦的生活损坏了他们的记忆，面对往事他们通常显得木讷，常常以不知所措的微笑搪塞过去。他们对自己的经历缺乏热情，仿佛是道听途说般地只记得零星几点，即便是这零星几点也都是自身之外的记忆，用一、两句话表达了他们所认为的一切。在这里，我常常听到后辈们这样骂他们： “一大把年纪全活到狗身上去了。</pre>
+        </div>
+        <div class="show-more">
+          <em></em>
+          <a class="more-link" href="javascript:;">...展开</a>
+        </div>
+    </div>
+</body>
+<script>
+    let moreFlag = false
+
+    let descBox = document.querySelector('.desc-box')
+    let descContent = document.querySelector('.desc-content')
+    let showMore = document.querySelector('.show-more')
+    let moreLink = document.querySelector('.more-link')
+
+    moreLink.addEventListener('click', function(e) {
+        if (!moreFlag) {
+            descBox.style.paddingBottom = '40px';
+            descContent.style.height = 'auto';
+            this.innerHTML = '^收起';
+        } else {
+            descBox.style.paddingBottom = '10px';
+            descContent.style.height = '60px';
+            this.innerHTML = '...展开';
+        }
+        moreFlag = !moreFlag
+    });
+</script>
+</html>
