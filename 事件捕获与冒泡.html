@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer, .middle, .inner1, .inner2 {
+            display:block;
+            width:520px;
+            padding:15px;
+            margin:15px;
+            text-decoration:none;
+        }
+        .outer{
+            border:1px solid red;
+            color:red;
+        }
+        .middle{
+            border:1px solid green;
+            color:green;
+            width:460px;
+        }
+        .inner1, .inner2{
+            border:1px solid purple;
+            color:purple;
+            width:400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        outer
+        <div class="middle" target="_blank">
+            middle, capture & none-capture
+            <div class="inner1" target="_blank">
+                inner stopPropagation
+            </div>
+        </div>
+    </div>
+    <button onClick="stopMidPropagation()" >阻止middle的捕获阶段中断事件传播</button>
+    <button onClick="allowMidPropagation()" >恢复middle的捕获阶段事件传播</button>
+</body>
+<script>
+    let outer  = document.getElementsByClassName('outer') [0];
+    let middle = document.getElementsByClassName('middle')[0];
+    let inner1 = document.getElementsByClassName('inner1')[0];
+
+    let capture = {
+        capture : true
+    };
+    let noneCapture = {
+        capture : false
+    };
+    let passive = {
+        passive : true
+    };
+    let nonePassive = {
+        passive : false
+    };
+    
+    outer .addEventListener('click', outerHandler);
+    middle.addEventListener('click', captureHandlerAllowPropa, capture);
+    middle.addEventListener('click', noneCaptureHandler, noneCapture);
+    inner1.addEventListener('click', innerHandler);
+
+    function outerHandler(event)
+    {
+        alert('outer click!');
+    }
+    function captureHandlerStopPropa(event)
+    {
+        event.stopPropagation();
+        alert('middle, capture!');
+    }
+    function captureHandlerAllowPropa(event)
+    {
+        alert('middle, capture!');
+    }
+    function noneCaptureHandler(event)
+    {
+        alert('middle, none-capture!');
+    }
+    function innerHandler(event)
+    {
+        alert('inner click!')
+        alert('inner stopPropagation!');
+        event.stopPropagation();
+    }
+    function stopMidPropagation() {
+        middle.removeEventListener('click', captureHandlerAllowPropa, true)
+        middle.addEventListener('click', captureHandlerStopPropa, capture);
+    }
+    function allowMidPropagation() {
+        console.log('??')
+        middle.removeEventListener('click', captureHandlerStopPropa, true)
+        middle.addEventListener('click', captureHandlerAllowPropa, capture);
+    }
+</script>
+</html>
